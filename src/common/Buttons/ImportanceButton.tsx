@@ -32,18 +32,22 @@ const handlePriority = (priority: PriorityLevel) => {
 };
 
 const Button = styled.button<{ priority: PriorityLevel }>`
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 2px 8px;
-    gap: 10px;
-    margin: 0;
-    width: 'fit-content';
-    height: 20px;
-    border-radius: 2px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 10px;
+  margin: 0;
+  width: fit-content;
+  height: 20px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 160%;
+  letter-spacing: -0.01em;
 
-    ${({ priority }) => handlePriority(priority)}
+  ${({ priority }) => handlePriority(priority)}
 `;
 
 export default Button;
