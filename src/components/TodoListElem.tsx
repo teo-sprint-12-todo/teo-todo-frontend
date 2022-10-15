@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Item} from '../pages/MainTodoList'
 
 interface ContextsProps{
     item:object;
@@ -39,13 +40,8 @@ const Check = styled
     border: solid black 5px;
 `
 
-interface Item {
-    importance : number,
-    context : string
-}
-
-export const TodoListElem = ({item}:ContextsProps) => {
-    // const {importance, context}:Item = item
+export const TodoListElem = (item:Item) => {
+    const {importance, context} = item
 
     return (
         <Element>
@@ -54,7 +50,7 @@ export const TodoListElem = ({item}:ContextsProps) => {
                 <Content>
                     <Check_label
                         htmlFor = "contentCheck"
-                    >{}</Check_label>
+                    >{context}</Check_label>
                     <Check
                         type = "checkbox"
                         name = "contentCheck"
