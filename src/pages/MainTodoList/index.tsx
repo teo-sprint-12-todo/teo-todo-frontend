@@ -44,7 +44,7 @@ const lst: Item[] = [
     }
 ]
 
-export const MainTodoList = () => {
+const MainTodoList = () => {
 
     const TodoList = lst.map(item => <TodoListElem key={item.importance} importance={item.importance} context={item.context}/>)
 
@@ -55,3 +55,5 @@ export const MainTodoList = () => {
         </div>
     )
 }
+
+export default MainTodoList
