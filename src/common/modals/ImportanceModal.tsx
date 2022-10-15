@@ -1,6 +1,6 @@
 import React from 'react';
 import ImportanceButton, { PriorityLevel } from '../Buttons/ImportanceButton';
-
+import { GoalButton } from '../Buttons';
 import ModalBase from './ModalBase';
 
 interface Priority {
@@ -29,6 +29,8 @@ function ImportanceModal() {
       {priorityArray.map(({ level, text }) => (
         <ImportanceButton key={level} priority={level}>{text}</ImportanceButton>
       ))}
+      {['#5F25C9', '#257AC9', '#B225C9'].map((color) => (<GoalButton backgroundColor={color}>s</GoalButton>))}
+
     </ModalBase>
   );
 }
