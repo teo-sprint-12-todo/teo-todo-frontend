@@ -1,57 +1,139 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import type { Item } from '../pages/MainTodoList';
+import type { PriorityLevel } from '../common/Buttons/ImportanceButton';
 
 const ElemHeader = styled.div`
-    background-color : black;
-    height:inherit;
-    width:3%;
-    border-radius : 5px 0 0 5px;
+  background-color: black;
+  height: inherit;
+  width: 3%;
+  border-radius: 5px 0 0 5px;
 `;
 
 const ElemContent = styled.div`
-    background-color : #cfcfcf;
-    width : 100%;
-    display:flex;
-    align-items : center;
-    padding : 1em
+  background-color: #cfcfcf;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
 `;
 
 const Element = styled.div`
-    display : flex;
-    height : 10vh;
+  display: flex;
+  height: 15vh;
 `;
 
 const Content = styled.div`
-    display : flex;
-    width : 100%;
-    justify-content :space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 const CheckLabel = styled.label``;
 
 const Check = styled.input`
-    width:2em;
-    border: solid black 5px;    
-    `;
+  width: 2em;
+  border: solid black 5px;
+`;
 
-function TodoListElem(item:Item) {
+/** Tags */
+const Tags = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+`;
+
+const high = css`
+  background: #fce2e5;
+  border: 1px solid #e4566e;
+  color: #d11136;
+`;
+const medium = css`
+  background: #fceee2;
+  border: 1px solid #e48956;
+  color: #e85300;
+`;
+const low = css`
+  background: #d5f6de;
+  border: 1px solid #71ff7d;
+  color: #068f10;
+`;
+
+const handlePriority = (priority: PriorityLevel) => {
+  switch (priority) {
+    case 'high':
+      return high;
+    case 'medium':
+      return medium;
+    case 'low':
+      return low;
+    default:
+      return medium;
+  }
+};
+
+const Priority = styled.div<{ priority: PriorityLevel }>`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 10px;
+  margin: 0;
+  width: fit-content;
+  height: 20px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 160%;
+  letter-spacing: -0.01em;
+
+  ${({ priority }) => handlePriority(priority)}
+`;
+
+const Goal = styled.div<{ backgroundColor: string }>`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  gap: 10px;
+
+  min-width: 34px;
+  width: fit-content;
+  height: 20px;
+  margin: 0;
+  background: ${({ backgroundColor }) => backgroundColor};
+  border: none;
+  border-radius: 2px;
+
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 160%;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+`;
+
+function TodoListElem(item: Item) {
   const { importance, context } = item;
 
   return (
     <Element>
       <ElemHeader />
       <ElemContent>
+        <Tags>
+          <Goal backgroundColor="green">일상</Goal>
+          <Priority priority="high">중요</Priority>
+        </Tags>
         <Content>
-          <CheckLabel
-            htmlFor="contentCheck"
-          >
-            {context}
-          </CheckLabel>
-          <Check
-            type="checkbox"
-            name="contentCheck"
-          />
+          <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
+          <Check type="checkbox" name="contentCheck" />
         </Content>
       </ElemContent>
     </Element>
