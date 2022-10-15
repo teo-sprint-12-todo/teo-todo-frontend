@@ -1,1 +1,1 @@
-export type DummyType = 'dummy'
+export type DummyType = 'dummy';
