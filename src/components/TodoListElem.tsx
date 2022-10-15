@@ -8,7 +8,7 @@ const ElemHeader = styled.div<{complete:boolean}> `
     height:inherit;
     width:8px;
     border-radius : 5px 0 0 5px;
-`
+`;
 
 const ElemContent = styled.div<{complete:boolean}> `
     background-color : ${(props)=>(props.complete ? "#D8D8DC": "#fff")} ;
@@ -16,18 +16,18 @@ const ElemContent = styled.div<{complete:boolean}> `
     display:flex;
     align-items : center;
     padding : 1em
-`
+`;
 
-const Element = styled.div `
+const Element = styled.div`
     display : flex;
     height : 10vh;
-`
+`;
 
-const Content = styled.div `
+const Content = styled.div`
     display : flex;
     width : 100%;
     justify-content :space-between;
-`
+`;
 
 const Check_label = styled.label ``
 
