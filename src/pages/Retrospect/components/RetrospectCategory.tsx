@@ -6,7 +6,7 @@ const Container = styled.div`
   margin-top:28.82px;
 `;
 
-const Tap = styled.div<{ name: string, selectedValue:string }>`
+const Tap = styled.div<{ categoryId: number, selectedValue:number }>`
   width:96px;
   font-family: Pretendard;
   font-size: 15px;
@@ -15,30 +15,34 @@ const Tap = styled.div<{ name: string, selectedValue:string }>`
   letter-spacing: -0.01em;
   text-align: center;
   
-  ${({ name, selectedValue }) => (name === selectedValue
+  ${({ categoryId, selectedValue }) => (categoryId === selectedValue
     ? 'color: #0E0E0F;'
     : 'color: #BCBCC0;')
 }
 `;
 
-const TapBottomSheet = styled.div<{ name: string, selectedValue:string }>`
+const TapBottomSheet = styled.div<{ categoryId: number, selectedValue:number }>`
   width:96px;
   height:3px;
   border-radius: 30px 20px 0px 0px;
   
-  ${({ name, selectedValue }) => (name === selectedValue
+  ${({ categoryId, selectedValue }) => (categoryId === selectedValue
     ? 'background-color:#6C6C70;'
     : 'background-color: #EBEBF0;')
 }
 `;
 
-function RetrospectCategory() {
+interface RetrospectCategoryProps {
+  selectedCategory:number;
+  setSelectedCategory:React.Dispatch<React.SetStateAction<number>>;
+}
+
+function RetrospectCategory({ selectedCategory, setSelectedCategory }:RetrospectCategoryProps) {
   interface Category {
     id:number;
     name: string;
   }
 
-  const [selectedCategory, setSelectedCategory] = useState('모두');
   const [categoryList, setCategoryList] = useState<Category[]>();
 
   const requestTodoCategoryList = async () => {
@@ -60,22 +64,22 @@ function RetrospectCategory() {
     }
   };
 
-  useEffect(() => { requestTodoCategoryList(); }, []);
+  // useEffect(() => { requestTodoCategoryList(); }, []);
 
   return (
     <Container>
-      <Tap name="모두" selectedValue={selectedCategory} onClick={() => setSelectedCategory('모두')}>
+      <Tap categoryId={0} selectedValue={selectedCategory} onClick={() => setSelectedCategory(0)}>
         모두
-        <TapBottomSheet name="모두" selectedValue={selectedCategory} />
+        <TapBottomSheet categoryId={0} selectedValue={selectedCategory} />
       </Tap>
       {categoryList && categoryList.map((category) => (
         <Tap
-          name={category.name}
+          categoryId={category.id}
           selectedValue={selectedCategory}
-          onClick={() => setSelectedCategory(category.name)}
+          onClick={() => setSelectedCategory(category.id)}
         >
           {category.name}
-          <TapBottomSheet name={category.name} selectedValue={selectedCategory} />
+          <TapBottomSheet categoryId={category.id} selectedValue={selectedCategory} />
         </Tap>
       ))}
     </Container>

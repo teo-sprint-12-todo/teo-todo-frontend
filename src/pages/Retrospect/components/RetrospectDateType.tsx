@@ -28,9 +28,12 @@ const Tab = styled.div<{ name:string; selectedValue:string; }>`
 }
 `;
 
-function RetrospectDateType() {
-  const [selectedDateType, setSelectedDateType] = useState('week');
+interface RetrospectDateTypeProps {
+  selectedDateType:string;
+  setSelectedDateType:React.Dispatch<React.SetStateAction<string>>;
+}
 
+function RetrospectDateType({ selectedDateType, setSelectedDateType }:RetrospectDateTypeProps) {
   return (
     <Container>
       <Tab name="week" selectedValue={selectedDateType} onClick={() => setSelectedDateType('week')}>주</Tab>
