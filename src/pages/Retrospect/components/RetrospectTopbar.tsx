@@ -1,4 +1,5 @@
 import React from 'react';
+import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -8,12 +9,8 @@ const Container = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  display:flex;
-  justify-content:center;
-  align-items:center;
   width:60px;
   height:60px;
-  border:2px solid black;
   border-radius:50%;
 `;
 
@@ -21,6 +18,7 @@ const ImgBg = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  margin-top:-25%;
   width:50px;
   height:50px;
   border-radius:50%;
@@ -45,6 +43,7 @@ const Text = styled.div`
   line-height: 22px;
   letter-spacing: -0.02em;
   text-align: left;
+  white-space:pre-wrap;
 `;
 
 const Quote = styled.img`
@@ -60,20 +59,33 @@ const Quote = styled.img`
 }
 `;
 
-function RetrospectTopbar() {
+interface RetrospectTopbarProps {
+  percentage:number;
+  text:string;
+}
+
+function RetrospectTopbar({ percentage, text }:RetrospectTopbarProps) {
   return (
     <Container>
       <ImgContainer>
-        <ImgBg>
-          <Img src="/assets/img/flower-pot.svg" />
-        </ImgBg>
+        <CircularProgressbarWithChildren
+          value={percentage}
+          styles={buildStyles({
+            pathTransitionDuration: 0.5,
+            pathColor: '#00D2FA',
+            trailColor: '#D8D8DC',
+
+          })}
+        >
+          <ImgBg>
+            <Img src="/assets/img/flower-pot.svg" />
+          </ImgBg>
+        </CircularProgressbarWithChildren>
       </ImgContainer>
       <TextContainer>
         <Quote alt="quote" src="/assets/img/doubleQuoteStart.svg" top="-10.85px" left="0px" />
         <Text>
-          지난 한일을 돌아보며
-          <br />
-          생각을 기록해보세요
+          {text}
         </Text>
         <Quote alt="quote" src="/assets/img/doubleQuoteEnd.svg" bottom="-10.85px" right="0px" />
       </TextContainer>
