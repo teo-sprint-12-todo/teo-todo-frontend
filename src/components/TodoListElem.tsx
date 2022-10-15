@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import {Item} from '../pages/MainTodoList'
+import type {Item} from '../pages/MainTodoList'
 import checked from '../assets/checked.png'
 
-const ElemHeader = styled.div<{complete:boolean}> `
+const ElemHeader = styled.div<{complete:boolean}>`
     background-color : ${(props)=>(props.complete ? "#8E8E93": "#81d6f5")} ;
     height:inherit;
     width:8px;
     border-radius : 5px 0 0 5px;
 `;
 
-const ElemContent = styled.div<{complete:boolean}> `
+const ElemContent = styled.div<{complete:boolean}>`
     background-color : ${(props)=>(props.complete ? "#D8D8DC": "#fff")} ;
     width : 100%;
     display:flex;
@@ -29,9 +29,9 @@ const Content = styled.div`
     justify-content :space-between;
 `;
 
-const Check_label = styled.label ``
+const CheckLabel = styled.label``
 
-const Check = styled.input `
+const Check = styled.input`
     appearance:none;
     width:1.5em;
     height:1.5em;
@@ -46,10 +46,10 @@ const Check = styled.input `
         background-size : 80% 80%;
         background-position:50% 60%;
         background-repeat:no-repeat;
-    }
+    };
 `
 
-export const TodoListElem = (item : Item) => {
+function TodoListElem(item: Item) {
     const [isChecked, setIsChecked] = useState<boolean>(false)
     const {importance, context} = item
 
@@ -59,13 +59,15 @@ export const TodoListElem = (item : Item) => {
 
     return (
         <Element>
-            <ElemHeader complete={isChecked}></ElemHeader>
+            <ElemHeader complete={isChecked} />
             <ElemContent complete={isChecked}>
                 <Content>
-                    <Check_label htmlFor="contentCheck">{context}</Check_label>
-                    <Check type="checkbox" name="contentCheck" onChange={onCheck}></Check>
+                    <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
+                    <Check type="checkbox" name="contentCheck" onChange={onCheck} />
                 </Content>
             </ElemContent>
         </Element>
     )
 }
+
+export default TodoListElem
