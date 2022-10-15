@@ -9,7 +9,7 @@ const Container = styled.div`
 function RetrospectList() {
   return (
     <Container>
-      <RetrospectCard date="2022.10" percentage={50} todoCount={72} didCount={36} />
+      <RetrospectCard date="2022.10" />
       <RetrospectCard date="2022.09" percentage={50} todoCount={72} didCount={56} text="기록이 되었습니다" />
       <RetrospectCard date="2022.08" percentage={100} todoCount={42} didCount={26} text="기록이 되었습니다" />
       <RetrospectCard date="2022.07" percentage={90} todoCount={62} didCount={16} text="기록이 되었습니다" />

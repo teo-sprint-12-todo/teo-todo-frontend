@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -33,7 +33,34 @@ const TapBottomSheet = styled.div<{ name: string, selectedValue:string }>`
 `;
 
 function RetrospectCategory() {
+  interface Category {
+    id:number;
+    name: string;
+  }
+
   const [selectedCategory, setSelectedCategory] = useState('모두');
+  const [categoryList, setCategoryList] = useState<Category[]>();
+
+  const requestTodoCategoryList = async () => {
+    try {
+      const myHeaders = new Headers();
+      const requestOptions:RequestInit = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow',
+      };
+      myHeaders.append('Authorization', 'bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA');
+
+      const response = await fetch('http://3.35.154.223:8080/v1/todo/category/list', requestOptions).then((res) => res.json());
+      const { data } = response;
+      setCategoryList(data);
+    } catch (err) {
+      console.log('@@@@@@@@@@ GET TODO CATEGORY LIST ERROR @@@@@@@@@@');
+      console.log(err);
+    }
+  };
+
+  useEffect(() => { requestTodoCategoryList(); }, []);
 
   return (
     <Container>
@@ -41,14 +68,16 @@ function RetrospectCategory() {
         모두
         <TapBottomSheet name="모두" selectedValue={selectedCategory} />
       </Tap>
-      <Tap name="카테고리1" selectedValue={selectedCategory} onClick={() => setSelectedCategory('카테고리1')}>
-        카테고리1
-        <TapBottomSheet name="카테고리1" selectedValue={selectedCategory} />
-      </Tap>
-      <Tap name="카테고리2" selectedValue={selectedCategory} onClick={() => setSelectedCategory('카테고리2')}>
-        카테고리2
-        <TapBottomSheet name="카테고리2" selectedValue={selectedCategory} />
-      </Tap>
+      {categoryList && categoryList.map((category) => (
+        <Tap
+          name={category.name}
+          selectedValue={selectedCategory}
+          onClick={() => setSelectedCategory(category.name)}
+        >
+          {category.name}
+          <TapBottomSheet name={category.name} selectedValue={selectedCategory} />
+        </Tap>
+      ))}
     </Container>
   );
 }
