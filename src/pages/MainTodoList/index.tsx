@@ -8,47 +8,50 @@ const TodoListBox = styled.div `
     gap:0.8em;
 `
 
-const lst:{importance:number, context:string}[] = [
-    {   
-        importance:0,
+export interface Item {
+    importance: number,
+    context: string
+}
+
+const lst: Item[] = [
+    {
+        importance: 0,
         context: "Loeam Ipsum"
     }, {
-        importance:1,
+        importance: 1,
         context: "Loeam Ipsum"
     }, {
-        importance:2,
+        importance: 2,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }, {
-        importance:3,
+        importance: 3,
         context: "Loeam Ipsum"
     }
 ]
 
 export const MainTodoList = () => {
 
-    const TodoList = lst.map(item =>
-        <TodoListElem item={item} />
-    )
+    const TodoList = lst.map(item => <TodoListElem key={item.importance} importance={item.importance} context={item.context}/>)
 
     return (
         <div>
             <TodoListBox>{TodoList}</TodoListBox>
-            
+
         </div>
     )
 }
