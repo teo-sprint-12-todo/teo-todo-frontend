@@ -2,32 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Button = styled.button<{ isActive: boolean }>`
-    background-color: ${(props) => (props.isActive ? 'red' : 'black')};
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
 `;
 
 interface NavButtonProps {
-  path: string
-  icon: any
-  text: string
-  onClick: () =>void
-  isActive?:boolean
+  path: string;
+  icon: any;
+  text: string;
+  onClick: () => void;
 }
-function NavButton({
-  path, icon, text, onClick, isActive,
-}: NavButtonProps) {
+function NavButton({ path, icon, text, onClick }: NavButtonProps) {
   return (
-    <Button isActive={isActive ?? false} onClick={onClick}>
+    <Button onClick={onClick}>
       <Link to={path}>
         <img src={icon} alt={text} />
-        {text}
       </Link>
     </Button>
   );
 }
-
-NavButton.defaultProps = {
-  isActive: false,
-};
 
 export default NavButton;
