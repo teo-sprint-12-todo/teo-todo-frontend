@@ -5,6 +5,7 @@ import { TodoRequestBody } from '../../types/todo';
 const Container = styled.div`
   display: flex;  
   width: 100%;
+  margin-top:33px;
 `
 const Left = styled.div`
   width: 4px;
@@ -32,17 +33,17 @@ const Input = styled.input`
 
 
 interface Props {
-  todoText: string
-  setTodo: React.Dispatch<React.SetStateAction<TodoRequestBody>>
+  todoText: string;
+  setTodo: React.Dispatch<React.SetStateAction<TodoRequestBody>>;
 }
 function InputBox({todoText, setTodo}: Props) {
 
   const handleChange = (event: { target: { value: string }; }) => {
     
-    setTodo(prev => ({
-        ...prev,
-        text: event.target.value
-      }))
+    setTodo((prev) => ({
+      ...prev,
+      text: event.target.value
+    }))
   };
 
   return (
