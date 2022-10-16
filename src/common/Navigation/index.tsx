@@ -58,7 +58,7 @@ function Navigation() {
         icon={currentPathName === '/goal' ? activeGoalImg : goalImg}
         text="목표"
         path="/goalList"
-        onClick={() => handleClick('/')}
+        onClick={() => handleClick('/goalList')}
       />
     </NavWrapper>
   );
