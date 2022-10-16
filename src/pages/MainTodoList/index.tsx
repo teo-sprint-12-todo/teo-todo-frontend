@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import TodoListElem from '../../components/TodoListElem';
+import CategoryBox from '../../components/CategoryGroup'
 
 const TodoListBox = styled.div`
   display: flex;
@@ -52,44 +53,10 @@ const lst: Item[] = [
   },
 ];
 
-/** Category */
-const CategoryGroup = styled.div`
-  width: 100vw;
-  display: flex;
-  overflow-x: auto;
-`;
-const Category = styled.button`
-  width: 96px;
-  flex: 1 0 auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: white;
-`;
-const CategoryName = styled.div`
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const CategoryFooter = styled.div`
-  width: 100%;
-  height: 5px;
-  background-color: gray;
-  border-radius: 5px 5px 0 0;
-`;
 
 // TODO: 카테고리 늘어나면 스크롤
 function RequestCategoryList(): { id: number; name: string }[] {
-  console.log('카테고리 리스트 요청 !!!')
+  console.log('카테고리 리스트 요청 !!!');
   // TODO: 카테고리 리스트 요청
   // const myHeaders = new Headers();
   // myHeaders.append(
@@ -172,39 +139,12 @@ function onClickCategory(id: number) {
   requestTodo(id);
 }
 
-interface CategoryBoxProps {
-  categoryList: { id: number; name: string }[];
-}
 
-function CategoryBox({ categoryList }: CategoryBoxProps) {
-  return (
-    <CategoryGroup>
-      <Category
-        onClick={() => {
-          onClickCategory(-1);
-        }}
-      >
-        <CategoryName>모두</CategoryName>
-        <CategoryFooter />
-      </Category>
-      {categoryList.map((elem) => (
-        <Category
-          onClick={() => {
-            onClickCategory(elem.id);
-          }}
-        >
-          <CategoryName>{elem.name}</CategoryName>
-          <CategoryFooter />
-        </Category>
-      ))}
-    </CategoryGroup>
-  );
-}
 
 /** MainTodoList */
 function MainTodoList() {
   const categoryList = RequestCategoryList();
-  requestTodo(-1)
+  requestTodo(-1);
   const sample = [
     { id: 1, name: '카테1' },
     { id: 2, name: '카테2' },
@@ -216,7 +156,7 @@ function MainTodoList() {
 
   return (
     <div>
-      <CategoryBox categoryList={categoryList} />
+      <CategoryBox categoryList={categoryList, onClickCategory} />
       <TodoListBox>{TodoList}</TodoListBox>
     </div>
   );
