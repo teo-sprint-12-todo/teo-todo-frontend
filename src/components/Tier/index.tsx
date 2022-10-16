@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import tier1Img from '../../assets/tierImg/tier1.png';
+import tier2Img from '../../assets/tierImg/tier2.png';
+import tier3Img from '../../assets/tierImg/tier3.png';
+import tier4Img from '../../assets/tierImg/tier4.png';
+import tier5Img from '../../assets/tierImg/tier5.png';
+import tier6Img from '../../assets/tierImg/tier6.png';
+import tier7Img from '../../assets/tierImg/tier7.png';
 // import checked from '../assets/checked.png'
 
 const Wrapper = styled.div`
@@ -48,7 +55,7 @@ function Tier() {
 
   return (
     <Wrapper>
-      <TierImage src="/tierImg/tier1.png" alt="티어이미지" />
+      <TierImage src={tier1Img} alt="티어이미지" />
       <Wrapper>
         <StyledLink to="/signIn">로그인</StyledLink>
         <StyledLink to="/signUp">회원가입</StyledLink>
