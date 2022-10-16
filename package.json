@@ -10,6 +10,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
+    "@types/react-circular-progressbar": "^1.1.0",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
     "axios": "^1.1.2",
