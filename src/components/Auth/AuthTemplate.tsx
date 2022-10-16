@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import closeImg from '../../assets/authImg/close.svg';
 
 const AuthTemplateWrapper = styled.div`
   position: absolute;
@@ -14,7 +15,7 @@ const AuthTemplateWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ebebf0;
+  background: #ffffff;
 `;
 
 const WhiteBox = styled.div`
@@ -34,13 +35,19 @@ const WhiteBox = styled.div`
   border-radius: 2px;
 `;
 
+const LinkToMain = styled(Link)`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+`;
+
 function AuthTemplate({ children }: any) {
   return (
     <AuthTemplateWrapper>
       <WhiteBox>
-        <div className="logo-area">
-          <Link to="/mainTodoList">Main</Link>
-        </div>
+        <LinkToMain to="/mainTodoList">
+          <img src={closeImg} alt="메인페이지 이동" />
+        </LinkToMain>
         {children}
       </WhiteBox>
     </AuthTemplateWrapper>
