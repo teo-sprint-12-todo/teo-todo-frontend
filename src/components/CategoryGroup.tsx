@@ -21,7 +21,8 @@ const Category = styled.button<{selectedId:number, categoryId:number}>`
   margin: 0;
   padding: 0;
   border: none;
-  background-color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")} ;;
+  background-color: white;
+  color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")}
 `;
 const CategoryName = styled.div`
   height: 30px;
@@ -51,7 +52,8 @@ function CategoryBox({ categoryList, onClickHandler }: CategoryBoxProps) {
         selectedId={selectedId}
         categoryId={idAllCategory}
         onClick={() => {
-          onClickHandler(-1);
+          onClickHandler(idAllCategory);
+          setSelectedId(idAllCategory);
         }}
       >
         <CategoryName>모두</CategoryName>
@@ -65,12 +67,13 @@ function CategoryBox({ categoryList, onClickHandler }: CategoryBoxProps) {
           categoryId={elem.id}
           onClick={() => {
             onClickHandler(elem.id);
+            setSelectedId(elem.id);
           }}
         >
           <CategoryName>{elem.name}</CategoryName>
           <CategoryFooter 
           selectedId={selectedId}
-          categoryId={idAllCategory}/>
+          categoryId={elem.id}/>
         </Category>
       ))}
     </CategoryGroup>
