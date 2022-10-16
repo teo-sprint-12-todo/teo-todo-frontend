@@ -168,13 +168,17 @@ function MainTodoList() {
   ));
 
   return (
+    <>
     <div>
       <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
       <TodoListBox>{TodoList}</TodoListBox>
       {isInputBoxVisible && <TodoInputBox />}
-      <FloatingActionButton onClick={handleClickAddButton} />
+      
+      
       {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} />}
     </div>
+    <FloatingActionButton onClick={handleClickAddButton} />
+    </>
   );
 }
 

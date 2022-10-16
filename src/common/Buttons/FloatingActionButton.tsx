@@ -11,7 +11,7 @@ const Button = styled.button`
     border-radius: 50%;
     background: #000000;
     color: white;
-    position: absolute;
+    position: fixed;
     bottom: calc(20px + 54px);
     right: 20px;
 `;
