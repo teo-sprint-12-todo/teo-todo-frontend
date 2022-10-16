@@ -9,6 +9,7 @@ import { SAMPLE_AUTH_TOKEN } from '../../constants/url';
 import { TodoRequestBody } from '../../types/todo';
 import BASEURL from '../../config';
 import { TodoType } from '../../types/mainTodoListType';
+import Tier from '../../components/Tier';
 
 const TodoListMain = styled.div`
     padding : 0 1.2em 0 1.2em;  
@@ -141,19 +142,23 @@ const ADD_TODO_INITIAL_VALUE = {
 
   return (
     <>
-    <div>
-      <TodoListMain>
-      {categoryList&& <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />}
-      {isInputBoxVisible && todo && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
-      <TodoListBox>
-        {todoList.map((data)=> 
-          <TodoListElem key={data.id} importance={data.importance} context={data.text} id={data.id}/>
-        )}
-      </TodoListBox>
-      </TodoListMain>
-      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
-    </div>
-    <FloatingActionButton onClick={handleClickAddButton} isInputBoxVisible={isInputBoxVisible} />
+      <div>
+      <Tier />
+        <div>
+          <TodoListMain>
+          {categoryList&& <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />}
+          {isInputBoxVisible && todo && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
+          <TodoListBox>
+            {todoList.map((data)=> 
+              <TodoListElem key={data.id} importance={data.importance} context={data.text} id={data.id}/>
+            )}
+          </TodoListBox>
+          </TodoListMain>
+          {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
+        </div>
+      
+      </div>
+      <FloatingActionButton onClick={handleClickAddButton} isInputBoxVisible={isInputBoxVisible} />
     </>
   );
 }

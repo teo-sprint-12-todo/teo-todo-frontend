@@ -15,13 +15,13 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-
+  height: 56px;
   display: flex;
+  -webkit-box-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
   align-items: center;
-
-  height: 40px;
-  padding: 10px 0px;
+  padding: 8px 8px;
   background-color: white;
 `;
 

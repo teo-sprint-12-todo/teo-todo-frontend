@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './common/Navigation';
-import Tier from './components/Tier';
 import SignInPage from './pages/Auth/SignInPage';
 import SignUpPage from './pages/Auth/SignUpPage';
 import Calendar from './pages/Calendar';
@@ -13,7 +12,7 @@ import Retrospect from './pages/Retrospect/Retrospect';
 function App() {
   return (
     <HashRouter>
-      <Tier />
+      
       <Routes>
         <Route path="/mainTodoList" element={<MainTodoList />} />
         <Route path="/calendar" element={<Calendar />} />

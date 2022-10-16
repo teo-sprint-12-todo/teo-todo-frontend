@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Page } from '../../common/Page';
 import Calendar from '../../components/Calendar/Calendar';
+import Tier from '../../components/Tier';
 import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 import { TodoList } from '../../types/todo';
 
@@ -35,6 +36,7 @@ function CalendarPage() {
 
   return (
     <Page>
+      <Tier />
       <Calendar todoList={todoList}/>
     </Page>
   );
