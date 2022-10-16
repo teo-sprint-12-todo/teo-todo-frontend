@@ -8,7 +8,8 @@ export interface RetrospectCardProps {
 
 export interface Item {
   importance: number,
-  context: string
+  context: string,
+  id: number
 }
 
 export interface GoalDate {

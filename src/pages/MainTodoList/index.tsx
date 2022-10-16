@@ -147,7 +147,7 @@ const ADD_TODO_INITIAL_VALUE = {
       {isInputBoxVisible && todo && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>
         {todoList.map((data)=> 
-          <TodoListElem key={data.id} importance={data.importance} context={data.text} />
+          <TodoListElem key={data.id} importance={data.importance} context={data.text} id={data.id}/>
         )}
       </TodoListBox>
       </TodoListMain>
