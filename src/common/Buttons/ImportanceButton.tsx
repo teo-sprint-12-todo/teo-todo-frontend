@@ -3,19 +3,19 @@ import styled, { css } from 'styled-components';
 export type PriorityLevel = 'high' | 'medium' | 'low';
 
 const high = css`
-    background: #FCE2E5;
-    border: 1px solid #E4566E;
-    color: #D11136;
+  background: #fce2e5;
+  border: 1px solid #e4566e;
+  color: #d11136;
 `;
 const medium = css`
-    background: #FCEEE2;
-    border: 1px solid #E48956;
-    color: #E85300;
+  background: #fceee2;
+  border: 1px solid #e48956;
+  color: #e85300;
 `;
 const low = css`
-    background: #D5F6DE;
-    border: 1px solid #71FF7D;
-    color: #068F10;
+  background: #d5f6de;
+  border: 1px solid #71ff7d;
+  color: #068f10;
 `;
 
 const handlePriority = (priority: PriorityLevel) => {
