@@ -197,7 +197,7 @@ function MainTodoList() {
     <>
     <div>
       <TodoListMain>
-      <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
+      <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />
       {isInputBoxVisible && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>{TodoList}</TodoListBox>
       {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
