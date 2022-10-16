@@ -9,12 +9,14 @@ import retrospectImg from '../../assets/navImg/retrospect.svg';
 import activeRetrospectImg from '../../assets/navImg/active_retrospect.svg';
 import goalImg from '../../assets/navImg/goal.svg';
 import activeGoalImg from '../../assets/navImg/active_goal.svg';
+import { NAV_HEIGHT } from '../../constants/style';
+
 
 const NavWrapper = styled.div`
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 54px;
+  height: ${NAV_HEIGHT}px;
   border-top: 1px solid #d8d8dc;
 
   display: flex;
@@ -51,14 +53,14 @@ function Navigation() {
             : retrospectImg
         }
         text="회고"
-        path="/"
+        path="/retrospect"
         onClick={() => handleClick('/retrospect')}
       />
       <NavButton
         icon={currentPathName === '/goal' ? activeGoalImg : goalImg}
         text="목표"
-        path="/"
-        onClick={() => handleClick('/')}
+        path="/goalList"
+        onClick={() => handleClick('/goalList')}
       />
     </NavWrapper>
   );

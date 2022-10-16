@@ -1,25 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProgressBar from '../../../components/ProgressBar';
+import { RetrospectCardProps } from '../../../types/dummy';
 
-const Container = styled.div`
-  margin-top:17px;
-  padding-bottom:30px;
+const Container = styled.div `
+  height : fit-content;
+  width:100%;
   border-bottom:1px solid #EBEBF0;
 `;
 
-const ContentContainer = styled.div`
+const ContentHeader = styled.div `
   display:flex;
+  justify-content:space-between;
+  margin-top : 0.8em;
+`
+
+const ContentContainer = styled.div `
+  display:grid;
+  grid-template-columns : 1fr 5fr;
+  align-items:center;
+  gap:1em;
+  width:100%;
+  margin:1em 0 1em 0;
 `;
 
-const AchieveContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-`;
-
-const Date = styled.div`
-  font-family: 'Pretendard';
+const Date = styled.div `
+  
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -29,21 +35,7 @@ const Date = styled.div`
   color: #1C1C1E;
 `;
 
-const Achieve = styled.div`
-  width:42px;
-  height:42px;
-  margin-top:17px;
-`;
-
-const RecordContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  width:100%;
-  margin-left:16.5px;
-`;
-
-const PracticeContainer = styled.div`
+const PracticeContainer = styled.div `
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,7 +45,7 @@ const PracticeContainer = styled.div`
   color:#8E8E93;
   background: #EBEBF0;
   border-radius: 16px;
-  font-family: Pretendard;
+  
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;
@@ -61,9 +53,9 @@ const PracticeContainer = styled.div`
   text-align: right;
 `;
 
-const PracticeText = styled.div`
+const PracticeText = styled.div `
   color: #007FC7;
-  font-family: 'Pretendard';
+  
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -72,22 +64,20 @@ const PracticeText = styled.div`
   letter-spacing: -0.01em;
 `;
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  margin-top:14px;
-  gap: 6px;
+const TextContainer = styled.div `
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* width: 90%; */
+  /* padding:7% 5%; */
   border-radius: 4px;
   background:#E8EAF9;
 `;
 
-const Text = styled.div`
+const Text = styled.div `
   margin:16px;
   color:#3A3A3C;
-  font-family: Pretendard;
   font-size: 13px;
   font-weight: 400;
   line-height: 16px;
@@ -95,43 +85,30 @@ const Text = styled.div`
   text-align: left;
 `;
 
-interface RetrospectCardProps {
-  date:string;
-  percentage:number;
-  todoCount:number;
-  didCount:number;
-  text: string;
-}
-
-function RetrospectCard({
-  date, percentage, todoCount, didCount, text,
-}:RetrospectCardProps) {
-  return (
-    <Container>
-      <ContentContainer>
-        <AchieveContainer>
-          <Date>
-            {date}
-          </Date>
-          <Achieve>
-            <ProgressBar percentage={percentage} size={44} />
-          </Achieve>
-        </AchieveContainer>
-
-        <RecordContainer>
-          <PracticeContainer>
-            <PracticeText>{`${didCount}개 실천`}</PracticeText>
-            {`/${todoCount}`}
-          </PracticeContainer>
-          <TextContainer>
-            <Text>
-              {text}
-            </Text>
-          </TextContainer>
-        </RecordContainer>
-      </ContentContainer>
-    </Container>
-  );
+function RetrospectCard(
+    {date, percentage, todoCount, didCount, text} : RetrospectCardProps
+) {
+    return (
+        <Container>
+            <ContentHeader>
+                <Date>
+                    {date}
+                </Date>
+                <PracticeContainer>
+                    <PracticeText>{`${didCount}개 실천`}</PracticeText>
+                    {`/${todoCount}`}
+                </PracticeContainer>
+            </ContentHeader>
+            <ContentContainer>
+                <ProgressBar percentage={percentage} size={3.5}/>
+                <TextContainer>
+                    <Text>
+                        {text}
+                    </Text>
+                </TextContainer>
+            </ContentContainer>
+        </Container>
+    );
 }
 
 export default RetrospectCard;
