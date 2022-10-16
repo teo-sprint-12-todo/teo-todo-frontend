@@ -50,25 +50,25 @@ const Check = styled.input`
     };
 `
 
-function TodoListElem(item: Item) {
-    const [isChecked, setIsChecked] = useState<boolean>(false)
-    const {importance, context} = item
+// function TodoListElem(item: Item) {
+//     const [isChecked, setIsChecked] = useState<boolean>(false)
+//     const {importance, context} = item
 
-    const onCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setIsChecked(!isChecked)
-    }
+//     const onCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
+//         setIsChecked(!isChecked)
+//     }
 
-    return (
-        <Element>
-            <ElemHeader complete={isChecked} />
-            <ElemContent complete={isChecked}>
-                <Content>
-                    <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
-                    <Check type="checkbox" name="contentCheck" onChange={onCheck} />
-                </Content>
-            </ElemContent>
-        </Element>
-    )
+//     return (
+//         <Element>
+//             <ElemHeader complete={isChecked} />
+//             <ElemContent complete={isChecked}>
+//                 <Content>
+//                     <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
+//                     <Check type="checkbox" name="contentCheck" onChange={onCheck} />
+//                 </Content>
+//             </ElemContent>
+//         </Element>
+//     )
 
 /** Tags */
 const Tags = styled.div`
@@ -157,7 +157,7 @@ function TodoListElem(item: Item) {
 
   return (
     <Element>
-      <ElemHeader />
+      {/* <ElemHeader />
       <ElemContent>
         <Tags>
           <Goal backgroundColor="green">일상</Goal>
@@ -167,7 +167,7 @@ function TodoListElem(item: Item) {
           <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
           <Check type="checkbox" name="contentCheck" />
         </Content>
-      </ElemContent>
+      </ElemContent> */}
     </Element>
   );
 }

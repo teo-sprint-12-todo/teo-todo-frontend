@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import GoalNav from '../../components/GoalNav';
-import {GoalElemList} from '../../components/GoalList'
+import GoalElemList from '../../components/GoalList'
 
 const GoalListBox = styled.div `
     display:flex;
@@ -10,24 +10,20 @@ const GoalListBox = styled.div `
 `;
 
 function GoalList() {
-    const [isComplete, setIsComplete] = useState<boolean>(false)
+    const [isComplete, setIsComplete] = useState(false)
 
     const changeList = (comp : boolean): void => {
         setIsComplete(!comp)
     }
 
-    return (<div> < GoalNav isComplete = {
-        isComplete
-    }
-    changeList = {
-        changeList
-    } /> {
-        isComplete
-            ? <div> aa</div>
-            : <GoalListBox> 
-                { GoalElemList }
+    return (
+        <div>
+            <GoalNav changeList={changeList}/>
+            <GoalListBox>
+                <GoalElemList complete={isComplete}/>
             </GoalListBox>
-    }</div>);
+        </div>
+    );
 }
 
 export default GoalList;

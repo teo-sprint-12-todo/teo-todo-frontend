@@ -25,21 +25,20 @@ const ElemCntComplete = styled.div<{isProgress:boolean}> `
 `
 
 interface Changed{
-  isComplete:boolean,
   changeList:(comp:boolean) => void
 }
 
-function GoalNav({isComplete, changeList}:Changed) {
+function GoalNav({changeList}:Changed) {
   const [progress, setProgress] = useState<boolean>(true)
   const [complete, setComplete] = useState<boolean>(!progress)
 
-  const progressHandler = ():void=>{
+  const progressHandler = ()=>{
     setProgress(true);
     setComplete(false);
     changeList(true);
   }
 
-  const completeHandler = ():void=>{
+  const completeHandler = ()=>{
     setProgress(false);
     setComplete(true);
     changeList(false);
