@@ -22,7 +22,7 @@ const Category = styled.button<{selectedId:number, categoryId:number}>`
   padding: 0;
   border: none;
   background-color: white;
-  color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")}
+  color: ${(props)=>(props.selectedId === props.categoryId ? "#1C1C1E": "#BCBCC0")}
 `;
 const CategoryName = styled.div`
   height: 30px;
@@ -33,7 +33,7 @@ const CategoryName = styled.div`
 const CategoryFooter = styled.div<{selectedId:number, categoryId:number}>`
   width: 100%;
   height: 5px;
-  background-color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")};
+  background-color: ${(props)=>(props.selectedId === props.categoryId ? "#6C6C70": "#EBEBF0")};
   border-radius: 5px 5px 0 0;
 `;
 
