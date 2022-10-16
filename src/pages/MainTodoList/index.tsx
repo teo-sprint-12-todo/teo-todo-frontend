@@ -5,11 +5,14 @@ import CategoryBox from '../../components/CategoryGroup'
 
 import { Item } from '../../types/dummy';
 
+const TodoListMain = styled.div`
+    padding : 0 1.2em 0 1.2em;  
+`
 const TodoListBox = styled.div`
     display:flex;
     flex-direction:column;
     gap:0.8em;
-    padding : 0 1.2em 4em 1.2em;
+    padding : 2.5em 0em 4em 0em;
 `;
 
 const lst: Item[] = [
@@ -154,10 +157,13 @@ function MainTodoList() {
 
   return (
     <div>
-      <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />
-      <TodoListBox>{TodoList}</TodoListBox>
+      <TodoListMain>
+        <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />
+        <TodoListBox>{TodoList}</TodoListBox>
+      </TodoListMain>
     </div>
   );
 }
+
 
 export default MainTodoList;
