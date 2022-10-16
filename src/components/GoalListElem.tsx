@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import type { GoalListItem } from '../types/dummy';
+import React, {useState} from 'react';
+import styled, {css} from 'styled-components';
+import type {GoalListItem}
+from '../types/dummy';
 import checked from '../assets/checked.png';
-import type { PriorityLevel } from '../common/Buttons/ImportanceButton';
+import type {PriorityLevel}
+from '../common/Buttons/ImportanceButton';
 
-const ElemHeader = styled.div<{ complete: boolean }>`
-  background-color: ${(props) => (props.complete ? '#8E8E93' : '#81d6f5')};
+const ElemHeader = styled.div < {
+    complete: boolean
+} > `
+  background-color: ${ (props) => (
+    props.complete
+        ? '#8E8E93'
+        : '#81d6f5'
+)};
   height: inherit;
   width: 8px;
   border-radius: 5px 0 0 5px;
 `;
 
-const ElemContent = styled.div<{ complete: boolean }>`
-  background-color: ${(props) => (props.complete ? '#D8D8DC' : '#fff')};
+const ElemContent = styled.div < {
+    complete: boolean
+} > `
+  background-color: ${ (props) => (
+    props.complete
+        ? '#D8D8DC'
+        : '#fff'
+)};
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -21,22 +35,21 @@ const ElemContent = styled.div<{ complete: boolean }>`
   padding: 1em;
 `;
 
-const Element = styled.div`
+const Element = styled.div `
   display: flex;
   height: 15vh;
 `;
 
-const Content = styled.div`
+const Content = styled.div `
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
 `;
 
-const CheckLabel = styled.label``;
+const CheckLabel = styled.label ``;
 
-const Check = styled.input`
-
+const Check = styled.input `
   appearance: none;
   width: 1.5em;
   height: 1.5em;
@@ -56,7 +69,7 @@ const Check = styled.input`
 
 /** Tags */
 // TODO: 값 읽어와서 태그 추가
-const Tags = styled.div`
+const Tags = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -64,36 +77,40 @@ const Tags = styled.div`
   width: 100%;
 `;
 
-const high = css`
+const high = css `
   background: #fce2e5;
   border: 1px solid #e4566e;
   color: #d11136;
 `;
-const medium = css`
+
+const medium = css `
   background: #fceee2;
   border: 1px solid #e48956;
   color: #e85300;
 `;
-const low = css`
+
+const low = css `
   background: #d5f6de;
   border: 1px solid #71ff7d;
   color: #068f10;
 `;
 
-const handlePriority = (priority: PriorityLevel) => {
-  switch (priority) {
-    case 'high':
-      return high;
-    case 'medium':
-      return medium;
-    case 'low':
-      return low;
-    default:
-      return medium;
-  }
+const handlePriority = (priority : PriorityLevel) => {
+    switch (priority) {
+        case 'high':
+            return high;
+        case 'medium':
+            return medium;
+        case 'low':
+            return low;
+        default:
+            return medium;
+    }
 };
 
-const Priority = styled.div<{ priority: PriorityLevel }>`
+const Priority = styled.div < {
+    priority: PriorityLevel
+} > `
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -109,10 +126,13 @@ const Priority = styled.div<{ priority: PriorityLevel }>`
   line-height: 160%;
   letter-spacing: -0.01em;
 
-  ${({ priority }) => handlePriority(priority)}
+  ${ ({
+    priority}) => handlePriority(priority)}
 `;
 
-const Goal = styled.div<{ backgroundColor: string }>`
+    const Goal = styled.div < {
+        backgroundColor: string
+    } > `
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -125,7 +145,8 @@ const Goal = styled.div<{ backgroundColor: string }>`
   width: fit-content;
   height: 20px;
   margin: 0;
-  background: ${({ backgroundColor }) => backgroundColor};
+  background: ${ ({
+        backgroundColor}) => backgroundColor};
   border: none;
   border-radius: 2px;
 
@@ -137,24 +158,17 @@ const Goal = styled.div<{ backgroundColor: string }>`
   color: #ffffff;
 `;
 
-function GoalListElem({importance, context, isComplete}: GoalListItem) {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  
-  return (
-    <Element>
-      <ElemHeader complete={isChecked} />
-      <ElemContent complete={isChecked}>
-        <Tags>
-          <Goal backgroundColor="green">일상</Goal>
-          <Priority priority="high">중요</Priority>
-        </Tags>
-        <Content>
-          <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
-          <Check type="checkbox" name="contentCheck" />
-        </Content>
-      </ElemContent>
-    </Element>
-  );
+function GoalListElem({context, isComplete} : GoalListItem) {
+    return (<Element> < ElemHeader complete = {
+        isComplete
+    } /> <ElemContent complete = {
+        isComplete
+    } > <Tags> < Goal backgroundColor = "green" > 일상</Goal> < Priority priority = "high" > 중요</Priority></Tags><Content> < CheckLabel htmlFor = "contentCheck" > {
+        context
+    }</CheckLabel> {
+        isComplete
+            ? <Check type = "checkbox" name = "contentCheck" checked />:null
+    }</Content></ElemContent></Element>);
 }
 
 export default GoalListElem;
