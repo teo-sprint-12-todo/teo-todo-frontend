@@ -157,7 +157,7 @@ function TodoListElem(item: Item) {
           <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
           <Check type="checkbox" name="contentCheck" onChange={onCheck} />
         </Content>
-      </ElemContent> */}
+      </ElemContent>
     </Element>
   );
 }
