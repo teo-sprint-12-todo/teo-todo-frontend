@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 
   height: 40px;
   padding: 8px 0px;
+  margin-block : 1em;
 `;
 
 const TierImage = styled.img`

@@ -1,6 +1,6 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import ArrowLeft from '../../assets/goalsImg/arrowLeft.svg'
 import GoalsDetailAchieve from './components/GoalsDetailAchieve';
 import GoalsDetailDate from './components/GoalsDetailDate';
 import GoalsDetailProgressBar from './components/GoalsDetailProgressBar';
@@ -9,11 +9,6 @@ import GoalsDetailWeek from './components/GoalsDetailWeek';
 
 const Container = styled.div`
   margin:28px 20.5px;
-`
-
-const BackBtn = styled.img`
-  height: 16.2px;
-  width: 9.4px;
 `
 
 const Title = styled.div`
@@ -37,16 +32,20 @@ const FilterText = styled.div`
   text-align:end;
 `
 
-
-
 function GoalsDetail() {
+  const location = useLocation();
+  const {id, categoryId, name, startDate, endDate, complete, incomplete, inCom} = location.state.items;
+  const comNum = parseInt(complete, 10)
+  const incomNum = parseInt(incomplete, 10)
+  const percent = Math.floor((comNum/(comNum+incomNum))*100)
+  const ddayCnt = (new Date(endDate).getTime()-new Date(startDate).getTime())/(1000*60*60*24)
+
   return (
     <Container>
-      <BackBtn src={ArrowLeft} />
-      <GoalsDetailDate />
-      <Title>목표이름</Title>
-      <GoalsDetailAchieve />
-      <GoalsDetailProgressBar />
+      <GoalsDetailDate endDate={endDate} startDate={startDate} ddayCnt={ddayCnt}/>
+      <Title>{name}</Title>
+      <GoalsDetailAchieve percent={percent}/>
+      <GoalsDetailProgressBar percent={percent} />
       <GoalsDetailWeek />
       <FilterText>실천 완료만</FilterText>
       <GoalsDetailTodoListDay />
