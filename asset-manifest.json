@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teo-todo-frontend/static/css/main.91ef3ade.css",
-    "main.js": "/teo-todo-frontend/static/js/main.7b61921a.js",
+    "main.js": "/teo-todo-frontend/static/js/main.6d9577cc.js",
     "static/media/active_calendar.svg": "/teo-todo-frontend/static/media/active_calendar.897ef171d79ea8a308c7a2893c60ad86.svg",
     "static/media/calendar.svg": "/teo-todo-frontend/static/media/calendar.41aa6bae82ccbc74f46c6420be5dfdb1.svg",
     "static/media/active_retrospect.svg": "/teo-todo-frontend/static/media/active_retrospect.046ac5cb0b142a6ceb6254fa1e644a84.svg",
@@ -12,20 +12,20 @@
     "static/media/goal.svg": "/teo-todo-frontend/static/media/goal.4e156bf6e4d87bc82f7c3900d49d6d6d.svg",
     "static/media/active_goal.svg": "/teo-todo-frontend/static/media/active_goal.ed8ce90fce4be75d5f298fc9f7f5d22c.svg",
     "static/media/importance_icon.svg": "/teo-todo-frontend/static/media/importance_icon.f735596365d1cd9b3c083df882afc2b2.svg",
+    "static/media/statistics.svg": "/teo-todo-frontend/static/media/statistics.9585e52862b0afcecb43a941772a12d9.svg",
     "static/media/goal_icon.svg": "/teo-todo-frontend/static/media/goal_icon.5119ec37c7658af5dc47bdb48732cdac.svg",
-    "static/media/arrowLeft.svg": "/teo-todo-frontend/static/media/arrowLeft.83e7a1d2b467e0ff8a1b1697c5a1c1bd.svg",
+    "index.html": "/teo-todo-frontend/index.html",
     "static/media/arrow-left.svg": "/teo-todo-frontend/static/media/arrow-left.4e42dabe276368b1c638cbc93b73e81a.svg",
     "static/media/calendar_icon.svg": "/teo-todo-frontend/static/media/calendar_icon.9f961711a007cb74fed8bb28edf41020.svg",
-    "index.html": "/teo-todo-frontend/index.html",
     "static/media/doubleQuoteEnd.svg": "/teo-todo-frontend/static/media/doubleQuoteEnd.c5697e4f5ea8bf9f3630d9cb8d8c8826.svg",
     "static/media/doubleQuoteStart.svg": "/teo-todo-frontend/static/media/doubleQuoteStart.764cf691e720618359f866e117fc7b7b.svg",
     "static/media/arrow-right.svg": "/teo-todo-frontend/static/media/arrow-right.4326f6da4403d81f705da9c81b6d5f59.svg",
     "static/media/plus.svg": "/teo-todo-frontend/static/media/plus.dd3fc74d0859de87928b3cd5be04c2b4.svg",
     "main.91ef3ade.css.map": "/teo-todo-frontend/static/css/main.91ef3ade.css.map",
-    "main.7b61921a.js.map": "/teo-todo-frontend/static/js/main.7b61921a.js.map"
+    "main.6d9577cc.js.map": "/teo-todo-frontend/static/js/main.6d9577cc.js.map"
   },
   "entrypoints": [
     "static/css/main.91ef3ade.css",
-    "static/js/main.7b61921a.js"
+    "static/js/main.6d9577cc.js"
   ]
 }
