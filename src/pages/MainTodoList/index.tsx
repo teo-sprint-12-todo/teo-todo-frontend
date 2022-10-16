@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 
-import { Item } from '../../types/dummy';
+// import { Item } from '../../types/dummy';
 
 const TodoListBox = styled.div`
     display:flex;

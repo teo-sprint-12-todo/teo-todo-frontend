@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { DateSelectType } from '../../../types/retrospectType';
 
 const Container = styled.div`
   display:flex;
@@ -31,8 +32,8 @@ const Tab = styled.div<{ name:string; selectedValue:string; }>`
 `;
 
 interface RetrospectDateTypeProps {
-  selectedDateType:string;
-  setSelectedDateType:React.Dispatch<React.SetStateAction<string>>;
+  selectedDateType:DateSelectType;
+  setSelectedDateType:React.Dispatch<React.SetStateAction<DateSelectType>>;
 }
 
 function RetrospectDateType({ selectedDateType, setSelectedDateType }:RetrospectDateTypeProps) {

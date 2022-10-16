@@ -21,7 +21,7 @@ const ContentContainer = styled.div `
   align-items:center;
   gap:1em;
   width:100%;
-  margin:1em 0 2em 0;
+  margin:1em 0 1em 0;
 `;
 
 const Date = styled.div `
@@ -65,12 +65,12 @@ const PracticeText = styled.div `
 `;
 
 const TextContainer = styled.div `
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  padding:7% 5%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* width: 90%; */
+  /* padding:7% 5%; */
   border-radius: 4px;
   background:#E8EAF9;
 `;

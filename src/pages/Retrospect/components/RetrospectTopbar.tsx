@@ -3,7 +3,13 @@ import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-pro
 import styled from 'styled-components';
 import doubleQuoteEnd from '../../../assets/retrospectImg/doubleQuoteEnd.svg';
 import doubleQuoteStart from '../../../assets/retrospectImg/doubleQuoteStart.svg';
-import flowerPot from '../../../assets/retrospectImg/flower-pot.svg';
+import tier1 from '../../../assets/tierImg/tier1.png';
+import tier2 from '../../../assets/tierImg/tier2.png';
+import tier3 from '../../../assets/tierImg/tier3.png';
+import tier4 from '../../../assets/tierImg/tier4.png';
+import tier5 from '../../../assets/tierImg/tier5.png';
+import tier6 from '../../../assets/tierImg/tier6.png';
+import tier7 from '../../../assets/tierImg/tier7.png';
 
 const Container = styled.div`
   display:flex;
@@ -66,9 +72,12 @@ const Quote = styled.img`
 interface RetrospectTopbarProps {
   percentage:number;
   text:string;
+  myTier: number;
 }
 
-function RetrospectTopbar({ percentage, text }:RetrospectTopbarProps) {
+function RetrospectTopbar({ percentage, text, myTier }:RetrospectTopbarProps) {
+  const TIERIMG = ['dummy', tier1,tier2,tier3,tier4,tier5,tier6, tier7];
+
   return (
     <Container>
       <ImgContainer>
@@ -82,7 +91,7 @@ function RetrospectTopbar({ percentage, text }:RetrospectTopbarProps) {
           })}
         >
           <ImgBg>
-            <Img src={flowerPot} />
+            <Img src={TIERIMG[myTier]} />
           </ImgBg>
         </CircularProgressbarWithChildren>
       </ImgContainer>
