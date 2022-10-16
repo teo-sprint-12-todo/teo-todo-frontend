@@ -10,6 +10,7 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
   display:flex;
+  justify-content:space-between;
 `;
 
 const AchieveContainer = styled.div`
@@ -39,8 +40,8 @@ const RecordContainer = styled.div`
   display:flex;
   flex-direction:column;
   align-items:flex-end;
+  margin-left:58.5px;
   width:100%;
-  margin-left:16.5px;
 `;
 
 const PracticeContainer = styled.div`
@@ -72,40 +73,83 @@ const PracticeText = styled.div`
   letter-spacing: -0.01em;
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled.div<{ isWriting:boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   margin-top:14px;
+  padding:16px;
   gap: 6px;
   border-radius: 4px;
-  background:#E8EAF9;
+
+  background:${({ isWriting }) => (isWriting ? '#E8EAF9' : '#F6F6F8')}
+`;
+
+const TextAreaContainer = styled.div`
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  width:100%;
+`;
+
+const TextArea = styled.textarea`
+  width:100%;
+  border:none;
+  background: #E8EAF9;
+  color: #3A3A3C;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.272358px;
+  outline:none;
+  resize:none;
 `;
 
 const Text = styled.div`
-  margin:16px;
-  color:#3A3A3C;
-  font-family: Pretendard;
-  font-size: 13px;
+  border:none;
+  background: #F6F6F8;
+  color: #717B7D;
+  font-family: 'Pretendard';
+  font-style: normal;
   font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0.2723584771156311px;
-  text-align: left;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.272358px;
 `;
 
-interface RetrospectCardProps {
+const Confrim = styled.div`
+  width:20px;
+  margin-top:4px;
+  color:#FB4B00;
+  font-family: Pretendard;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.2723584771156311px;
+  text-align: left;
+
+`;
+
+interface RetrospectWriteProps {
   date:string;
-  percentage:number;
-  todoCount:number;
-  didCount:number;
-  text: string;
+  isWriting:boolean;
+  setIsWriting:React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function RetrospectCard({
-  date, percentage, todoCount, didCount, text,
-}:RetrospectCardProps) {
+function RetrospectWrite({
+  date,
+  isWriting,
+  setIsWriting,
+}:RetrospectWriteProps) {
+  const handleClick = () => {
+    setIsWriting(false);
+    // post request
+  };
+
   return (
     <Container>
       <ContentContainer>
@@ -114,19 +158,25 @@ function RetrospectCard({
             {date}
           </Date>
           <Achieve>
-            <ProgressBar percentage={percentage} size={44} />
+            <ProgressBar percentage={0} size={44} />
           </Achieve>
         </AchieveContainer>
 
         <RecordContainer>
           <PracticeContainer>
-            <PracticeText>{`${didCount}개 실천`}</PracticeText>
-            {`/${todoCount}`}
+            <PracticeText>0개 실천</PracticeText>
+            /0
           </PracticeContainer>
-          <TextContainer>
-            <Text>
-              {text}
-            </Text>
+          <TextContainer isWriting={isWriting}>
+            {isWriting
+              ? (
+                <TextAreaContainer>
+                  <TextArea rows={4} />
+                  <Confrim onClick={handleClick}>완료</Confrim>
+                </TextAreaContainer>
+              )
+              : <Text onClick={() => setIsWriting(true)}>성과또는 개선할 점을 적어보세요. +</Text>}
+
           </TextContainer>
         </RecordContainer>
       </ContentContainer>
@@ -134,4 +184,4 @@ function RetrospectCard({
   );
 }
 
-export default RetrospectCard;
+export default RetrospectWrite;

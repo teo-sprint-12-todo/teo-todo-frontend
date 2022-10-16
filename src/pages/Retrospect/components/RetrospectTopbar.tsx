@@ -1,6 +1,9 @@
 import React from 'react';
 import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import styled from 'styled-components';
+import doubleQuoteEnd from '../../../assets/retrospectImg/doubleQuoteEnd.svg';
+import doubleQuoteStart from '../../../assets/retrospectImg/doubleQuoteStart.svg';
+import flowerPot from '../../../assets/retrospectImg/flower-pot.svg';
 
 const Container = styled.div`
   display:flex;
@@ -78,16 +81,16 @@ function RetrospectTopbar({ percentage, text }:RetrospectTopbarProps) {
           })}
         >
           <ImgBg>
-            <Img src="/assets/img/flower-pot.svg" />
+            <Img src={flowerPot} />
           </ImgBg>
         </CircularProgressbarWithChildren>
       </ImgContainer>
       <TextContainer>
-        <Quote alt="quote" src="/assets/img/doubleQuoteStart.svg" top="-10.85px" left="0px" />
+        <Quote alt="quote" src={doubleQuoteStart} top="-10.85px" left="0px" />
         <Text>
           {text}
         </Text>
-        <Quote alt="quote" src="/assets/img/doubleQuoteEnd.svg" bottom="-10.85px" right="0px" />
+        <Quote alt="quote" src={doubleQuoteEnd} bottom="-10.85px" right="0px" />
       </TextContainer>
     </Container>
   );
