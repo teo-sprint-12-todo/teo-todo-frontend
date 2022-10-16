@@ -36,6 +36,7 @@ const Content = styled.div`
 const CheckLabel = styled.label``;
 
 const Check = styled.input`
+
   appearance: none;
   width: 1.5em;
   height: 1.5em;
@@ -156,7 +157,7 @@ function TodoListElem(item: Item) {
           <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
           <Check type="checkbox" name="contentCheck" onChange={onCheck} />
         </Content>
-      </ElemContent>
+      </ElemContent> */}
     </Element>
   );
 }
