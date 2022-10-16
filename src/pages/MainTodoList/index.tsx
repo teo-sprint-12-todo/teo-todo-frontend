@@ -142,7 +142,7 @@ const ADD_TODO_INITIAL_VALUE = {
   return (
     <>
     <div>
-      <TodoListMain>
+      <TodoListMain>ionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
       {categoryList&& <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />}
       {isInputBoxVisible && todo && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>
