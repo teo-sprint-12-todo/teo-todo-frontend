@@ -77,7 +77,6 @@ function DateSelection({ setTodo, setCurrentOption }: Props) {
         setIsOpen(false)
     }
 
-
     return (
 
         <Modal
