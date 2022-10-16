@@ -6,10 +6,10 @@ const Container = styled.div<{ size:number }>`
   ${({ size }) => `width:${size}em; height:${size}em;`}
 `;
 
-const Text = styled.div`
+const Text = styled.div<{color:string}>`
   position:relative;
   top:-9%;
-  color:#00D2FA;
+  color:${(props)=>props.color};
   font-family: Pretendard-bold;
   font-size: 0.8em;
   font-weight: bolder;
@@ -53,7 +53,7 @@ function ProgressBar({ percentage, size, color }:ProgressBarProps) {
           trailColor: '#D8D8DC',
         })}
       >
-        <Text>{`${percent}%`}</Text>
+        <Text color={convertColorCode(color)}>{`${percent}%`}</Text>
       </CircularProgressbarWithChildren>
     </Container>
   );
