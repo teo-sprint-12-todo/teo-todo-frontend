@@ -10,3 +10,26 @@ export interface TodoRequestBody {
     /** **LocalDate** 마감 날짜 */
     endDate: string
 }
+
+export interface TodoList {
+    // "id": 3,
+    // "categoryId": null,
+    // "categoryName": null,
+    // "goalId": null,
+    // "goalName": null,
+    // "importance": 1,
+    // "text": "단어 시험보기",
+    // "startDate": "2022-10-15",
+    // "endDate": "2022-10-16",
+    // "isDone": false
+    id: number 
+    categoryId: number
+    categoryName: string
+    goalId: number
+    goalName: string
+    importance: number
+    text: string
+    startDate: string
+    endDate: string
+    isDone: boolean
+}

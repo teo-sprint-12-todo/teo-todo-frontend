@@ -1,26 +1,43 @@
-import React from 'react';
-import FloatingActionButton from '../../common/Buttons/FloatingActionButton';
-import { TodoInputBox } from '../../components/AddTodoInput';
+import axios, { AxiosResponse } from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Page } from '../../common/Page';
+import Calendar from '../../components/Calendar/Calendar';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { TodoList } from '../../types/todo';
 
-function Calendar() {
-  const [isVirtualKeyboardOpen, setIsVirtualKeyboardOpen] = React.useState<boolean>(false)
+function CalendarPage() {
+  const [todoList, setTodoList] = useState<TodoList[]>([])
 
-  const handClickAddTodo = () => {
+
+  const getTodoList = async(year:number, month:number ) => {
+
+    try {
+
+      const { data } = await axios.get<AxiosResponse<TodoList[]>>(`${SERVER_URL}/todo/todo/list/calendar/${year}/${month}`, {
+        headers: {
+            "Authorization": `bearer ${SAMPLE_AUTH_TOKEN}`,
+            "Content-Type": "application/json",
+        }
+      })
+      
+
+      setTodoList(data.data)
+
+    } catch {
+      console.log('error')
+    }
   }
-  const handleFocusInput = () => {
+  
 
-    const todoInput = document.getElementById('todo-input');
-    todoInput?.focus();
-
-
-    setIsVirtualKeyboardOpen(true)
-
-
-  };
+  useEffect(( ) => {
+    getTodoList(2022, 10)
+  },[])
 
   return (
-    <div />
+    <Page>
+      <Calendar todoList={todoList}/>
+    </Page>
   );
 }
 
-export default Calendar;
+export default CalendarPage;
