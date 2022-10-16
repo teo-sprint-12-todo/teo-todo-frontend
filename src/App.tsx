@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './common/Navigation';
 import Tier from './components/Tier';
 import SignInPage from './pages/Auth/SignInPage';
@@ -9,7 +9,7 @@ import MainTodoList from './pages/MainTodoList';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Tier />
       <Routes>
         <Route path="/mainTodoList" element={<MainTodoList />} />
@@ -18,7 +18,7 @@ function App() {
         <Route path="/signIn" element={<SignInPage />} />
       </Routes>
       <Navigation />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
