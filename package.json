@@ -10,6 +10,7 @@
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "axios": "^1.1.2",
     "react": "^18.2.0",
     "react-circular-progressbar": "^2.1.0",
@@ -17,6 +18,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
+    "styled-reset": "^4.4.2",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -54,6 +56,7 @@
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
