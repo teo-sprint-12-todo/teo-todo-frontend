@@ -10,6 +10,7 @@ import { ReactComponent as CategoryIcon } from '../../assets/category_icon.svg';
 import GoalSelection from './GoalSelection';
 import ImportanceSelection from './ImportanceSelection';
 import { TodoRequestBody } from '../../types/todo';
+import DateSelection from './DateSelection';
 
 const Container = styled.div<{ bottom: number }>`
     z-index: 999;
@@ -50,9 +51,7 @@ function OptionsAndSubmit({ onSubmit, setTodo }: Props) {
   const [currentOption, setCurrentOption] = React.useState<OptionType>(null)
 
 
-  const handleClickOption = (option: OptionType) => {
-    setCurrentOption(option)
-  }
+
 
 
   const windowHeight = window.innerHeight
@@ -65,7 +64,7 @@ function OptionsAndSubmit({ onSubmit, setTodo }: Props) {
   const renderOption = () => {
     switch (currentOption) {
       case 'calendar':
-        return null
+        return <DateSelection setTodo={setTodo} setCurrentOption={setCurrentOption} />
       case 'goal':
         return <GoalSelection setTodo={setTodo}/>
       case 'importance':
@@ -80,10 +79,10 @@ function OptionsAndSubmit({ onSubmit, setTodo }: Props) {
       {currentOption && <Top>{renderOption()}</Top>}
       <Bottom>
         <OptionContainer>
-          <Option onClick={() => handleClickOption(null)} ><CalendarIcon /></Option>
-          <Option onClick={() => handleClickOption('importance')} ><ImportanceIcon /></Option>
-          <Option onClick={() => handleClickOption('goal')} ><GoalIcon /></Option>
-          <Option onClick={() => handleClickOption(null)} ><CategoryIcon /></Option>
+          <Option onClick={() => setCurrentOption('calendar')} ><CalendarIcon /></Option>
+          <Option onClick={() => setCurrentOption('importance')} ><ImportanceIcon /></Option>
+          <Option onClick={() => setCurrentOption('goal')} ><GoalIcon /></Option>
+          <Option onClick={() => setCurrentOption(null)} ><CategoryIcon /></Option>
         </OptionContainer>
         <SubmitButton onClick={onSubmit} />
       </Bottom>

@@ -156,31 +156,36 @@ function MainTodoList() {
 
   const [isInputBoxVisible, setIsInputBoxVisible] = useState<boolean>()
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState<boolean>()
-  const [todo, setTodo] = useState<TodoRequestBody>({
+  const initialState: TodoRequestBody = {
     text: '',
-    endDate: '2020-12-31',
+    endDate: '2022-12-31',
     importance: 0,
     goalId: -1,
     categoryId: -1,
-  });
+  }
+  const [todo, setTodo] = useState<TodoRequestBody>(initialState);
 
   const handleClickAddButton = () => {
     setIsOptionsBoxVisible(true)
     setIsInputBoxVisible(true)
   }
-console.log(todo)
+
   const handleSubmit = async () => {
-    const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
+    try {
+
+      const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
         headers: {
             "Authorization": `bearer ${SAMPLE_AUTH_TOKEN}`,
             "Content-Type": "application/json",
         }
-    })
-
-    console.log(resp)
-    setIsOptionsBoxVisible(false)
-    setIsInputBoxVisible(false)
-    
+      })
+      console.log(resp)
+      setTodo(initialState)
+      setIsOptionsBoxVisible(false)
+      setIsInputBoxVisible(false)
+    } catch {
+      console.log('error')
+    }
   }
 
   const TodoList = lst.map((item) => (
