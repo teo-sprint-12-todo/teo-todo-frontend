@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { Goal } from '../pages/GoalList';
 
 const Elem = styled.div `
   display:grid;
   grid-template-columns:1fr 3fr;
-  height : 18vh;
+  height : 17vh;
   align-items:center;
   border-bottom : solid 1px #EBEBF0;
 `
@@ -57,20 +58,21 @@ const IsCompletionContent = styled.div<{complete:boolean}>`
   color : ${(props)=> props.complete ? "#FA3C00" : "#8E8E93"}
 `
 
-function GoalElem() {
+function GoalElem(item:Goal) {
   const True = true;
   const False = false;
+  const {startDate, endDate, name, complete, incomplete} = item;
 
   return (<Elem>
       <Graph>aaa</Graph>
       <ElemCotext>
-        <GoalDate>2022.10.17~2022.12.30</GoalDate>
-        <GoalTitle>목표이름</GoalTitle>
+        <GoalDate>{startDate}~{endDate}</GoalDate>
+        <GoalTitle>{name}</GoalTitle>
         <IsCompletionBox>
             <IsCompletionElem complete={True}>완</IsCompletionElem>
-            <IsCompletionContent complete={True}>0</IsCompletionContent>
+            <IsCompletionContent complete={True}>{complete}</IsCompletionContent>
             <IsCompletionElem complete={False}>미완</IsCompletionElem>
-            <IsCompletionContent complete={False}>0</IsCompletionContent>
+            <IsCompletionContent complete={False}>{incomplete}</IsCompletionContent>
         </IsCompletionBox>
       </ElemCotext>
   </Elem>);
