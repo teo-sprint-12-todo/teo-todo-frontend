@@ -11,16 +11,27 @@ import tier7Img from '../../assets/tierImg/tier7.png';
 // import checked from '../assets/checked.png'
 
 const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   height: 40px;
-  padding: 8px 0px;
-  margin-block : 1em;
+  padding: 10px 0px;
+  background-color: white;
+`;
+
+const NavWrapper = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 const TierImage = styled.img`
+  display: block;
   padding: 6px;
   margin-left: 20px;
 
@@ -30,37 +41,61 @@ const TierImage = styled.img`
 
 const StyledLink = styled(Link)`
   display: block;
-  /* background-color: tomato; */
 
   margin-right: 15px;
   padding: 4px 8px;
 
-  font-size: 10px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border: 1px solid #aeaeb2;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
 
   text-decoration: none;
-  color: black;
+  color: #007996;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+`;
+
+const LogOutButton = styled.button`
+  margin-right: 15px;
+  padding: 4px 8px;
+
+  border: 1px solid #aeaeb2;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+
+  text-decoration: none;
+  color: #007996;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
 `;
 
 export interface Item {
   tierLevel: number;
 }
 
-// todo : 서버에서 tier 레벨을 받아와 해당 레벨에 맞는 이미지 출력
 function Tier() {
-  // 회원가입, 로그인창 생성
-  // 로그인을 했다면 둘다 삭제, 로그아웃 버튼만 생성
-  // 회원가입 클릭시 => 회원가입 모달 생성
-  // 로그인 클릭시 => 로그인 모달 생성
+  const [isLocalStorage, setIsLocalStorage] = useState(
+    localStorage.getItem('user-token') !== 'null'
+  );
+
+  const removeLocalStorage = () => {
+    localStorage.removeItem('user-token');
+    setIsLocalStorage(!!localStorage.getItem('user-token'));
+  };
 
   return (
     <Wrapper>
       <TierImage src={tier1Img} alt="티어이미지" />
-      <Wrapper>
-        <StyledLink to="/signIn">로그인</StyledLink>
-        <StyledLink to="/signUp">회원가입</StyledLink>
-      </Wrapper>
+      {isLocalStorage && localStorage.length > 0 ? (
+        <LogOutButton onClick={removeLocalStorage}>로그아웃</LogOutButton>
+      ) : (
+        <NavWrapper>
+          <StyledLink to="/signIn">로그인</StyledLink>
+          <StyledLink to="/signUp">회원가입</StyledLink>
+        </NavWrapper>
+      )}
     </Wrapper>
   );
 }
