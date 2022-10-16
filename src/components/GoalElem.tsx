@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import type { Goal } from './GoalList';
+import ProgressBar from './ProgressBar';
 
 const Elem = styled.div `
   display:grid;
@@ -13,7 +14,9 @@ const Elem = styled.div `
 const Graph = styled.div `
   width:100%;
   height:100%;
-  background-color:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `
 
 const ElemCotext = styled.div`
@@ -25,12 +28,11 @@ font-size : 0.8em;`
 
 const GoalTitle = styled.div`
   font-size: 0.9 em;
-  margin-block:0.3em;
+  margin-block:0.5em;
   padding:0.2em 0.3em;
   width:fit-content;
   background-color:#E8EAF9;
   border-radius : 5px;
-  font-weight:bolder;
 `
 
 const IsCompletionBox = styled.div`
@@ -73,9 +75,12 @@ function GoalElem(item:Goal) {
   const True = true;
   const False = false;
   const {startDate, endDate, name, complete, incomplete, isCom} = item;
+  const percent = Math.floor((complete/(complete+incomplete))*100)
 
   return (<Elem>
-      <Graph>aaa</Graph>
+      <Graph>
+        <ProgressBar percentage={percent} size={3.5}/>
+      </Graph>
       <ElemCotext>
         <GoalDate>{startDate}~{endDate}{isCom?"[종료]":null}</GoalDate>
         <GoalTitle>{name}</GoalTitle>

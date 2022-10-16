@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const NavBox = styled.div `
   width:100%;
   border-block:solid #BCBCC0 1px;
-  padding: 0.7em 0;
+  padding: 0.5em 0;
   display:flex;
   justify-content:space-around;
 `
