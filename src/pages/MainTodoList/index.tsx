@@ -10,13 +10,15 @@ import { Item } from '../../types/dummy';
 import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 import { TodoRequestBody } from '../../types/todo';
 
+const TodoListMain = styled.div`
+    padding : 0 1.2em 0 1.2em;  
+`
 const TodoListBox = styled.div`
     display:flex;
     flex-direction:column;
     gap:0.8em;
-    padding : 0 1.2em 4em 1.2em;
+    padding : 2.5em 0em 4em 0em;
 `;
-
 
 const lst: Item[] = [
   {
@@ -195,14 +197,17 @@ function MainTodoList() {
   return (
     <>
     <div>
+      <TodoListMain>
       <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
       {isInputBoxVisible && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>{TodoList}</TodoListBox>
       {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
+      </TodoListMain>
     </div>
     <FloatingActionButton onClick={handleClickAddButton} />
     </>
   );
 }
+
 
 export default MainTodoList;
