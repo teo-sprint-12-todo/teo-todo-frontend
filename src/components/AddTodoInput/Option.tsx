@@ -8,7 +8,7 @@ const Button = styled.button`
   height: 16px;
 `
 
-export type OptionType = 'calendar' | 'goal' | 'importance' 
+export type OptionType = 'calendar' | 'goal' | 'importance' | null
 
 interface Props {
   children: React.ReactNode

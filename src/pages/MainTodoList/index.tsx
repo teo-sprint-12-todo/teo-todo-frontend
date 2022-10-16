@@ -168,7 +168,7 @@ function MainTodoList() {
     setIsOptionsBoxVisible(true)
     setIsInputBoxVisible(true)
   }
-
+console.log(todo)
   const handleSubmit = async () => {
     const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
         headers: {
@@ -196,7 +196,8 @@ function MainTodoList() {
       
       
       
-      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} />}
+      
+      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
     </div>
     <FloatingActionButton onClick={handleClickAddButton} />
     </>
