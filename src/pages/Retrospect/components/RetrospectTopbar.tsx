@@ -8,7 +8,7 @@ import flowerPot from '../../../assets/retrospectImg/flower-pot.svg';
 const Container = styled.div`
   display:flex;
   align-items:center;
-  margin-top:55px;
+  margin-top:2em;
 `;
 
 const ImgContainer = styled.div`
@@ -21,7 +21,8 @@ const ImgBg = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
-  margin-top:-25%;
+  position:relative;
+  top:-7%;
   width:50px;
   height:50px;
   border-radius:50%;

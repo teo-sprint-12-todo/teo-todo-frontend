@@ -3,18 +3,18 @@ import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-pro
 import styled from 'styled-components';
 
 const Container = styled.div<{ size:number }>`
-  ${({ size }) => `width:${size}px; height:${size}px;`}
+  ${({ size }) => `width:${size}em; height:${size}em;`}
 `;
 
 const Text = styled.div`
-  margin-top:-25%;
+  position:relative;
+  top:-9%;
   color:#00D2FA;
-  font-family: Pretendard;
-  font-size: 11px;
-  font-weight: 500;
+  font-family: Pretendard-bold;
+  font-size: 0.8em;
+  font-weight: bolder;
   line-height: 13px;
   letter-spacing: -0.01em;
-  text-align: center;
 `;
 
 interface ProgressBarProps {
@@ -51,7 +51,6 @@ function ProgressBar({ percentage, size, color }:ProgressBarProps) {
           pathTransitionDuration: 0.5,
           pathColor: convertColorCode(color),
           trailColor: '#D8D8DC',
-
         })}
       >
         <Text>{`${percent}%`}</Text>

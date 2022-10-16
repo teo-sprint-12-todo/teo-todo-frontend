@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavButton from './NavButton';
+import todoImg from '../../assets/navImg/todo.svg';
+import activeTodoImg from '../../assets/navImg/active_todo.svg';
+import calendarImg from '../../assets/navImg/calendar.svg';
+import activeCalendarImg from '../../assets/navImg/active_calendar.svg';
+import retrospectImg from '../../assets/navImg/retrospect.svg';
+import activeRetrospectImg from '../../assets/navImg/active_retrospect.svg';
+import goalImg from '../../assets/navImg/goal.svg';
+import activeGoalImg from '../../assets/navImg/active_goal.svg';
 
 const NavWrapper = styled.div`
   position: fixed;
@@ -12,6 +20,8 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  background-color: white;
 `;
 function Navigation() {
   const [currentPathName, setCurrentPathName] = React.useState<string>();
@@ -23,21 +33,13 @@ function Navigation() {
   return (
     <NavWrapper>
       <NavButton
-        icon={
-          currentPathName === '/mainTodoList'
-            ? '/navImg/active_todo.png'
-            : '/navImg/todo.png'
-        }
+        icon={currentPathName === '/mainTodoList' ? activeTodoImg : todoImg}
         text="투두"
         path="/mainTodoList"
         onClick={() => handleClick('/mainTodoList')}
       />
       <NavButton
-        icon={
-          currentPathName === '/calendar'
-            ? '/navImg/active_calendar.png'
-            : '/navImg/calendar.png'
-        }
+        icon={currentPathName === '/calendar' ? activeCalendarImg : calendarImg}
         text="캘린더"
         path="/calendar"
         onClick={() => handleClick('/calendar')}
@@ -45,22 +47,18 @@ function Navigation() {
       <NavButton
         icon={
           currentPathName === '/retrospect'
-            ? '/navImg/active_retrospect.png'
-            : '/navImg/retrospect.png'
+            ? activeRetrospectImg
+            : retrospectImg
         }
         text="회고"
-        path="/"
-        onClick={() => handleClick('/')}
+        path="/retrospect"
+        onClick={() => handleClick('/retrospect')}
       />
       <NavButton
-        icon={
-          currentPathName === '/goal'
-            ? '/navImg/active_goal.png'
-            : '/navImg/goal.png'
-        }
+        icon={currentPathName === '/goal' ? activeGoalImg : goalImg}
         text="목표"
-        path="/"
-        onClick={() => handleClick('/')}
+        path="/goalList"
+        onClick={() => handleClick('/goalList')}
       />
     </NavWrapper>
   );
