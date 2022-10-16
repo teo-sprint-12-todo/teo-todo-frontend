@@ -1,5 +1,8 @@
+/* eslint-disable no-plusplus */
+
 import React from 'react';
 import styled from 'styled-components';
+import { GoalDate } from '../../../types/dummy';
 
 const Container = styled.div`
   display:flex;
@@ -32,14 +35,15 @@ const Date = styled.div`
   text-align: center;
 `
 
-function GoalsDetailDate() {
+function GoalsDetailDate({startDate, endDate, ddayCnt}:GoalDate) {
+
   return (
     <Container>
       <Dday>
-        D-68
+        D-{ddayCnt}
       </Dday>
       <Date>
-        2022.10.17~2022.12.30
+        {startDate}~{endDate}
       </Date>
     </Container>
   );

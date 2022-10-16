@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Percent } from '../../../types/dummy';
 
 const Container = styled.div`
   position:relative;
@@ -12,20 +13,20 @@ const Container = styled.div`
   border-radius: 40px;
 `
 
-const PercentBar = styled.div`
+const PercentBar = styled.div<{percent:number}>`
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 47%;
+  width: ${((props)=>props.percent)}%;
   height: 16px;
   background: #FF9364;
   border-radius: 40px;
 `
 
-function GoalsDetailProgressBar() {
+function GoalsDetailProgressBar({percent}:Percent) {
   return (
     <Container>
-      <PercentBar />
+      <PercentBar percent={percent} />
     </Container>
   );
 }

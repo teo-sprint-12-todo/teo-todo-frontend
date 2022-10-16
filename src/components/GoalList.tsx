@@ -100,22 +100,14 @@ function GoalElemList({complete} : Complete) {
                     textDecoration: 'none'
                 }}>
                 <GoalElem
-                    key={item.id
-}
-                    id={item.id
-}
-                    categoryId={item.categoryId
-}
-                    name={item.name
-}
-                    startDate={item.startDate
-}
-                    endDate={item.endDate
-}
-                    complete={item.complete
-}
-                    incomplete={item.incomplete
-}
+                    key={item.id}
+                    id={item.id}
+                    categoryId={item.categoryId}
+                    name={item.name}
+                    startDate={item.startDate}
+                    endDate={item.endDate}
+                    complete={item.complete}
+                    incomplete={item.incomplete}
                     isCom={complete}/></Link>
         )
     })

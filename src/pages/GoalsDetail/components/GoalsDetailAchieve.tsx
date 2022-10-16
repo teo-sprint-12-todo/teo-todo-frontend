@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Percent } from '../../../types/dummy';
 
 const Container =styled.div`
   display:flex;
@@ -43,12 +44,12 @@ const CompleteText = styled.div`
   color: #FF9364;
 `
 
-function GoalsDetailAchieve() {
+function GoalsDetailAchieve({percent}:Percent) {
   return (
     <Container>
-      <AchieveText>75% 실천</AchieveText>
+      <AchieveText>{percent}% 실천</AchieveText>
       <TextContainer>
-        <CompleteText>75</CompleteText>/100
+        <CompleteText>{percent}</CompleteText>/100
       </TextContainer>
     </Container>
   );
