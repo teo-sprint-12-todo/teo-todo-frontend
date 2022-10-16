@@ -6,7 +6,7 @@ import GoalElemList from '../../components/GoalList'
 const GoalListBox = styled.div `
     display:flex;
     flex-direction:column;
-    padding: 0 1.2em;
+    padding : 0 1.2em 4em 1.2em;
 `;
 
 function GoalList() {

@@ -1,22 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 import ProgressBar from '../../../components/ProgressBar';
 
 const Container = styled.div`
-  margin-top:17px;
-  padding-bottom:30px;
+  height : fit-content;
+  width:100%;
   border-bottom:1px solid #EBEBF0;
 `;
 
 const ContentContainer = styled.div`
-  display:flex;
-  justify-content:space-between;
-`;
-
-const AchieveContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+  display:grid;
+  grid-template-columns : 1fr 5fr;
+  align-items:center;
+  gap:1em;
+  width:100%;
+  margin:1em 0 2em 0;
 `;
 
 const Date = styled.div`
@@ -28,20 +26,6 @@ const Date = styled.div`
   text-align: center;
   letter-spacing: -0.01em;
   color: #1C1C1E;
-`;
-
-const Achieve = styled.div`
-  width:42px;
-  height:42px;
-  margin-top:17px;
-`;
-
-const RecordContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  margin-left:58.5px;
-  width:100%;
 `;
 
 const PracticeContainer = styled.div`
@@ -78,10 +62,8 @@ const TextContainer = styled.div<{ isWriting:boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top:14px;
-  padding:16px;
-  gap: 6px;
+  width: 90%;
+  padding:7% 5%;
   border-radius: 4px;
 
   background:${({ isWriting }) => (isWriting ? '#E8EAF9' : '#F6F6F8')}
@@ -116,7 +98,7 @@ const Text = styled.div`
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
-  font-size: 11px;
+  font-size: 0.8em;
   line-height: 13px;
   letter-spacing: 0.272358px;
 `;
@@ -133,6 +115,12 @@ const Confrim = styled.div`
   text-align: left;
 
 `;
+
+const ContentHeader = styled.div`
+  display:flex;
+  justify-content:space-between;
+  margin-top : 0.8em;
+`
 
 interface RetrospectWriteProps {
   date:string;
@@ -152,22 +140,18 @@ function RetrospectWrite({
 
   return (
     <Container>
-      <ContentContainer>
-        <AchieveContainer>
-          <Date>
+      <ContentHeader>
+        <Date>
             {date}
-          </Date>
-          <Achieve>
-            <ProgressBar percentage={0} size={44} />
-          </Achieve>
-        </AchieveContainer>
-
-        <RecordContainer>
-          <PracticeContainer>
+        </Date>
+        <PracticeContainer>
             <PracticeText>0개 실천</PracticeText>
             /0
           </PracticeContainer>
-          <TextContainer isWriting={isWriting}>
+      </ContentHeader>
+      <ContentContainer>
+            <ProgressBar percentage={0} size={3.5} />
+            <TextContainer isWriting={isWriting}>
             {isWriting
               ? (
                 <TextAreaContainer>
@@ -176,9 +160,7 @@ function RetrospectWrite({
                 </TextAreaContainer>
               )
               : <Text onClick={() => setIsWriting(true)}>성과또는 개선할 점을 적어보세요. +</Text>}
-
           </TextContainer>
-        </RecordContainer>
       </ContentContainer>
     </Container>
   );

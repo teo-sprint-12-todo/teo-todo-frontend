@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import type { Item } from '../pages/MainTodoList';
+import type { Item } from '../types/dummy';
 import checked from '../assets/checked.png';
 import type { PriorityLevel } from '../common/Buttons/ImportanceButton';
 

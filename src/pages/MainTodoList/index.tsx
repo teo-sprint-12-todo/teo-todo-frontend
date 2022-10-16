@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 
+import { Item } from '../../types/dummy';
+
 const TodoListBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
+    display:flex;
+    flex-direction:column;
+    gap:0.8em;
+    padding : 0 1.2em 4em 1.2em;
 `;
 
 export interface Item {
   importance: number;
   context: string;
 }
-
 const lst: Item[] = [
   {
     importance: 0,

@@ -5,7 +5,7 @@ import RetrospectList from './components/RetrospectList';
 import RetrospectTopbar from './components/RetrospectTopbar';
 
 const Container = styled.div`
-  margin:0 20.5px;
+  padding : 0 1.2em 4em 1.2em;
 `;
 
 function Retrospect() {
