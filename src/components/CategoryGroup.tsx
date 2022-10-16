@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 /** Category */
 const CategoryGroup = styled.div`
-  width: 100vw;
+  width: calc(100vw - 1.2em);
   display: flex;
   overflow-x: auto;
 `;
