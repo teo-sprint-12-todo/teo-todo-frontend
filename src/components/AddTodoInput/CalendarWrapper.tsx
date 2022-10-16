@@ -1,3 +1,6 @@
+import styled from 'styled-components'
+
+const CalendarWrapper = styled.div`
 .react-calendar {
     width: 350px;
     max-width: 100%;
@@ -129,3 +132,6 @@
     background-color: #e6e6e6;
   }
   
+`
+
+export default CalendarWrapper

@@ -1,18 +1,14 @@
 import React from 'react';
 import Modal from 'react-modal';
 import Calendar from 'react-calendar'
-
-import './calendarStyle.css'
 import styled from 'styled-components';
 import { TodoRequestBody } from '../../types/todo';
 import { OptionType } from './Option';
+import CalendarWrapper from './CalendarWrapper';
 
 Modal.setAppElement('#root');
 
 
-const CalendarWrapper = styled.div`
- 
-`
 const Buttons = styled.div`
     display: flex;
     flex-flow: row;
@@ -76,7 +72,6 @@ function DateSelection({ setTodo, setCurrentOption }: Props) {
         setTodo(prev => ({ ...prev, endDate: localeDate }))
         setIsOpen(false)
     }
-
 
     return (
 

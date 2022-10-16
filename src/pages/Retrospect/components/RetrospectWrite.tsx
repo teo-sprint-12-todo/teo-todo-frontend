@@ -1,6 +1,8 @@
-import React from 'react';
-import styled, {createGlobalStyle} from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import BASEURL from '../../../config';
 import ProgressBar from '../../../components/ProgressBar';
+import { DateSelectType } from '../../../types/retrospectType';
 
 const Container = styled.div`
   height : fit-content;
@@ -64,7 +66,7 @@ const TextContainer = styled.div<{ isWriting:boolean }>`
   padding:7% 5%;
   border-radius: 4px;
 
-  background:${({ isWriting }) => (isWriting ? '#E8EAF9' : '#F6F6F8')}
+  background:${({ isWriting }) => (isWriting ? '#E8EAF9' : '#F6F6F8')};
 `;
 
 const TextAreaContainer = styled.div`
@@ -108,7 +110,6 @@ const Confrim = styled.div`
   line-height: 13px;
   letter-spacing: 0.2723584771156311px;
   text-align: left;
-
 `;
 
 const ContentHeader = styled.div`
@@ -119,18 +120,56 @@ const ContentHeader = styled.div`
 
 interface RetrospectWriteProps {
   date:string;
-  isWriting:boolean;
-  setIsWriting:React.Dispatch<React.SetStateAction<boolean>>;
+  selectedDateType: DateSelectType;
+  percentage: number;
+  todoCount:number;
+  didCount:number;
+  requestReviewStatLast:()=> void;
+  requestReviewList:()=>void;
 }
 
-function RetrospectWrite({
-  date,
-  isWriting,
-  setIsWriting,
-}:RetrospectWriteProps) {
+function RetrospectWrite({date, selectedDateType, percentage, todoCount, didCount, requestReviewStatLast, requestReviewList}:RetrospectWriteProps) {
+  const [isWriting, setIsWriting] = useState(false);
+  const [text, setText] = useState("");
+
+const requestReviewAdd = async () => {
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+    myHeaders.append("Content-Type", "application/json");
+    
+    
+    const raw = JSON.stringify({
+      periodType: selectedDateType.toUpperCase(),
+      text,
+    });
+    
+    const requestOptions: RequestInit = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    const response = await fetch(`${BASEURL}review/add`, requestOptions).then(res => res.json());
+
+    if(response.statusCode === 200){
+      requestReviewStatLast();
+      requestReviewList();
+    }
+  } catch (err) {
+    console.log('@@@@@@@@@@ POST REVIEW ADD ERROR @@@@@@@@@@');
+    console.log(err);
+  }
+    
+      
+
+}
+
   const handleClick = () => {
+    if(!text) return; // modal로 텍스트 없다고 표시 해주기
+    requestReviewAdd();
     setIsWriting(false);
-    // post request
   };
 
   return (
@@ -140,17 +179,17 @@ function RetrospectWrite({
             {date}
         </Date>
         <PracticeContainer>
-            <PracticeText>0개 실천</PracticeText>
-            /0
+            <PracticeText>{`${didCount}개 실천`}</PracticeText>
+            {`/${todoCount}`}
           </PracticeContainer>
       </ContentHeader>
       <ContentContainer>
-            <ProgressBar percentage={0} size={3.5} />
+            <ProgressBar percentage={percentage} size={3.5} />
             <TextContainer isWriting={isWriting}>
             {isWriting
               ? (
                 <TextAreaContainer>
-                  <TextArea rows={4} />
+                  <TextArea rows={4} onChange={(e)=> setText(e.target.value)} />
                   <Confrim onClick={handleClick}>완료</Confrim>
                 </TextAreaContainer>
               )
