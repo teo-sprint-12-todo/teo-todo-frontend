@@ -8,7 +8,6 @@ const Container = styled.div`
 
 const Date = styled.div`
   color:#3A3A3C;
-  font-family: Pretendard;
   font-size: 11px;
   font-weight: 600;
   line-height: 13px;

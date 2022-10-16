@@ -10,7 +10,7 @@ const Container =styled.div`
 const AchieveText = styled.div`
   
   color:#FF4A11;
-  font-family: Pretendard;
+  
   font-size: 15px;
   font-weight: 500;
   line-height: 16px;
@@ -22,7 +22,7 @@ const TextContainer = styled.div`
   display:flex;
   align-items:center;
   margin-left:8px;
-  font-family: 'Pretendard';
+  
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -33,7 +33,7 @@ const TextContainer = styled.div`
 `
 
 const CompleteText = styled.div`
-  font-family: 'Pretendard';
+  
   font-style: normal;
   font-weight: 400;
   font-size: 11px;

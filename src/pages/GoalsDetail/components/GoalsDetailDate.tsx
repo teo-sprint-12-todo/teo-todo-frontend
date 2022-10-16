@@ -16,7 +16,6 @@ height: 20px;
 background: #FF4A11;
 border-radius: 20px;
 color:#fff;
-font-family: Pretendard;
 font-size: 12px;
 font-weight: 400;
 line-height: 16px;
@@ -26,7 +25,6 @@ text-align: left;
 
 const Date = styled.div`
   margin-left:4px;
-  font-family: Pretendard;
   font-size: 11px;
   font-weight: 400;
   line-height: 13px;

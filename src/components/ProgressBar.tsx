@@ -10,7 +10,6 @@ const Text = styled.div`
   position:relative;
   top:-9%;
   color:#00D2FA;
-  font-family: Pretendard-bold;
   font-size: 0.8em;
   font-weight: bolder;
   line-height: 13px;
