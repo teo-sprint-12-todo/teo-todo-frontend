@@ -12,10 +12,6 @@ const TodoListBox = styled.div`
     padding : 0 1.2em 4em 1.2em;
 `;
 
-export interface Item {
-  importance: number;
-  context: string;
-}
 const lst: Item[] = [
   {
     importance: 0,
