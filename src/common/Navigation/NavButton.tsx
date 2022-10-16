@@ -6,6 +6,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   border: none;
+  background-color: white;
 `;
 
 interface NavButtonProps {
