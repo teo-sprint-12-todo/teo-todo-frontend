@@ -1,26 +1,14 @@
 import React from 'react';
-import FloatingActionButton from '../../common/Buttons/FloatingActionButton';
-import { TodoInputBox } from '../../components/AddTodoInput';
+import { Page } from '../../common/Page';
+import Calendar from '../../components/Calendar/Calendar';
 
-function Calendar() {
-  const [isVirtualKeyboardOpen, setIsVirtualKeyboardOpen] = React.useState<boolean>(false)
-
-  const handClickAddTodo = () => {
-  }
-  const handleFocusInput = () => {
-
-    const todoInput = document.getElementById('todo-input');
-    todoInput?.focus();
-
-
-    setIsVirtualKeyboardOpen(true)
-
-
-  };
+function CalendarPage() {
 
   return (
-    <div />
+    <Page>
+      <Calendar />
+    </Page>
   );
 }
 
-export default Calendar;
+export default CalendarPage;
