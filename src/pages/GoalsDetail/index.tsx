@@ -18,7 +18,7 @@ const BackBtn = styled.img`
 
 const Title = styled.div`
   margin-top:8px;
-  font-family: Pretendard;
+  
   font-size: 15px;
   font-weight: 500;
   line-height: 16px;
@@ -29,7 +29,7 @@ const Title = styled.div`
 const FilterText = styled.div`
   margin-top:20px;
   color:#8E8E93;
-  font-family: Pretendard;
+  
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;

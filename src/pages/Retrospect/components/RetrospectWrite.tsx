@@ -20,7 +20,6 @@ const ContentContainer = styled.div`
 `;
 
 const Date = styled.div`
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -40,7 +39,7 @@ const PracticeContainer = styled.div`
   color:#8E8E93;
   background: #EBEBF0;
   border-radius: 16px;
-  font-family: Pretendard;
+  
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;
@@ -50,7 +49,6 @@ const PracticeContainer = styled.div`
 
 const PracticeText = styled.div`
   color: #007FC7;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
@@ -83,7 +81,6 @@ const TextArea = styled.textarea`
   border:none;
   background: #E8EAF9;
   color: #3A3A3C;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -97,7 +94,6 @@ const Text = styled.div`
   border:none;
   background: #F6F6F8;
   color: #717B7D;
-  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
   font-size: 0.8em;
@@ -109,7 +105,6 @@ const Confrim = styled.div`
   width:20px;
   margin-top:4px;
   color:#FB4B00;
-  font-family: 'Pretendard';
   font-size: 11px;
   font-weight: 400;
   line-height: 13px;

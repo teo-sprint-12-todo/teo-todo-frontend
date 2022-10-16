@@ -8,7 +8,6 @@ const Container = styled.div`
 `
 
 const DayOfTheWeek = styled.div`
-  font-family: Pretendard;
   font-size: 11px;
   font-weight: 400;
   line-height: 13px;
@@ -23,7 +22,6 @@ const Day = styled.div<{dayType:number; isSelected:boolean;}>`
   height:20px;
   margin-top:4px;
   border-radius:50%;
-  font-family: Pretendard;
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;

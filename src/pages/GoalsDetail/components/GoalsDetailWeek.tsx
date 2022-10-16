@@ -7,7 +7,7 @@ const Container = styled.div`
 `
 
 const Month = styled.div`
-  font-family: Pretendard;
+  
   font-size: 11px;
   font-weight: 600;
   line-height: 13px;

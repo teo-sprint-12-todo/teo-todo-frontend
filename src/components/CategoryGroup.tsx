@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 /** Category */
 const CategoryGroup = styled.div`
-  width: 100vw;
+  width: calc(100vw - 1.2em);
   display: flex;
   overflow-x: auto;
 `;
-const Category = styled.button`
+const Category = styled.button<{selectedId:number, categoryId:number}>`
   width: 96px;
   flex: 1 0 auto;
   -webkit-appearance: none;
@@ -22,6 +22,7 @@ const Category = styled.button`
   padding: 0;
   border: none;
   background-color: white;
+  color: ${(props)=>(props.selectedId === props.categoryId ? "#1C1C1E": "#BCBCC0")}
 `;
 const CategoryName = styled.div`
   height: 30px;
@@ -29,37 +30,50 @@ const CategoryName = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const CategoryFooter = styled.div`
+const CategoryFooter = styled.div<{selectedId:number, categoryId:number}>`
   width: 100%;
   height: 5px;
-  background-color: gray;
+  background-color: ${(props)=>(props.selectedId === props.categoryId ? "#6C6C70": "#EBEBF0")};
   border-radius: 5px 5px 0 0;
 `;
 
 interface CategoryBoxProps {
   categoryList: { id: number; name: string }[],
-  onClick: (id: number) => void;
+  onClickHandler: (id: number) => void;
 }
 
-function CategoryBox({ categoryList, onClick }: CategoryBoxProps) {
+
+function CategoryBox({ categoryList, onClickHandler }: CategoryBoxProps) {
+  const [selectedId, setSelectedId] = useState<number>(-1)
+  const idAllCategory = -1
   return (
     <CategoryGroup>
       <Category
+        selectedId={selectedId}
+        categoryId={idAllCategory}
         onClick={() => {
-          onClick(-1);
+          onClickHandler(idAllCategory);
+          setSelectedId(idAllCategory);
         }}
       >
         <CategoryName>모두</CategoryName>
-        <CategoryFooter />
+        <CategoryFooter 
+        selectedId={selectedId}
+        categoryId={idAllCategory}/>
       </Category>
       {categoryList.map((elem) => (
         <Category
+          selectedId={selectedId}
+          categoryId={elem.id}
           onClick={() => {
-            onClick(elem.id);
+            onClickHandler(elem.id);
+            setSelectedId(elem.id);
           }}
         >
           <CategoryName>{elem.name}</CategoryName>
-          <CategoryFooter />
+          <CategoryFooter 
+          selectedId={selectedId}
+          categoryId={elem.id}/>
         </Category>
       ))}
     </CategoryGroup>

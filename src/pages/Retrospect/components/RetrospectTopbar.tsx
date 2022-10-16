@@ -47,7 +47,6 @@ const TextContainer = styled.div`
 `;
 
 const Text = styled.div`
-  font-family: Pretendard;
   font-size: 15px;
   font-weight: 500;
   line-height: 22px;
