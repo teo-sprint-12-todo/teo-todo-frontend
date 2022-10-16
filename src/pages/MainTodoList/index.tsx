@@ -54,13 +54,16 @@ const lst: Item[] = [
 
 /** Category */
 const CategoryGroup = styled.div`
-  width: inherit;
+  width: 100vw;
   display: flex;
-  justify-content: space-around;
+  overflow-x: auto;
 `;
 const Category = styled.button`
-  flex-grow: 1;
-  flex-shrink: 1;
+  width: 96px;
+  flex: 1 0 auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +82,7 @@ const CategoryName = styled.div`
 `;
 const CategoryFooter = styled.div`
   width: 100%;
-  height: 0.35em;
+  height: 5px;
   background-color: gray;
   border-radius: 5px 5px 0 0;
 `;
@@ -116,6 +119,14 @@ function RequestCategoryList(): { id: number; name: string }[] {
       {
         id: 2,
         name: '카테고리 2',
+      },
+      {
+        id: 3,
+        name: '카테고리 3',
+      },
+      {
+        id: 4,
+        name: '카테고리 3',
       },
     ],
   };
