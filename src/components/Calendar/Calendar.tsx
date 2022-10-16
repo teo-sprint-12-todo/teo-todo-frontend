@@ -25,7 +25,7 @@ const importanceColor = (importance: number) => {
         case 2:
             return '#FCE2E5'
         default:
-            return '#D5F6DE'
+            return '#DBDBDB'
     }
 }
 
@@ -57,6 +57,7 @@ function Calendar({ todoList }: Props) {
                 components={{
                     toolbar: Toolbar
                 }}
+                showAllEvents
                 
             />
         </CalendarWrapper>

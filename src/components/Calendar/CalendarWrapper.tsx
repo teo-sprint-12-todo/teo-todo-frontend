@@ -50,13 +50,12 @@ const CalendarWrapper = styled.div`
   }
   
   .rbc-row {
-    &:first-of-type {
-        height: 28px;
-        margin-bottom: 4px;
-    }
+   
   }
 
   .rbc-date-cell {
+    height: 28px;
+    margin-bottom: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
