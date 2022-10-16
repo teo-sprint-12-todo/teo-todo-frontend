@@ -101,7 +101,7 @@ const Priority = styled.div<{ priority: PriorityLevel }>`
   align-items: center;
   padding: 2px 8px;
   gap: 10px;
-  margin: 0;
+  margin: 0 4px 0 0;
   width: fit-content;
   height: 20px;
   border-radius: 2px;
@@ -125,7 +125,7 @@ const Goal = styled.div<{ backgroundColor: string }>`
   min-width: 34px;
   width: fit-content;
   height: 20px;
-  margin: 0;
+  margin: 0 4px 0 0;
   background: ${({ backgroundColor }) => backgroundColor};
   border: none;
   border-radius: 2px;
