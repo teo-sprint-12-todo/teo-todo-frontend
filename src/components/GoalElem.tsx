@@ -54,17 +54,6 @@ const IsCompletionElem = styled.div<{complete:boolean}>`
   background-color : ${(props)=> props.complete ? "#FA3C00" : "#8E8E93"}
 `
 
-const IsCompleteElem = styled.div<{complete:boolean}>`
-  background:black;
-  color:white;
-  width:10vw;
-  text-align:center;
-  padding:0.5em 0;
-  border-radius:1em;
-  font-size : 0.7em;
-  background-color : ${(props)=> props.complete ? "#1C1C1E" : "#8E8E93"}
-`
-
 const IsCompletionContent = styled.div<{complete:boolean}>`
   text-align:center;
   font-size : 0.8em;
@@ -79,14 +68,14 @@ function GoalElem(item:Goal) {
 
   return (<Elem>
       <Graph>
-        <ProgressBar percentage={percent} size={3.5}/>
+        <ProgressBar percentage={percent} size={3.5} color={isCom?"black":"red"}/>
       </Graph>
       <ElemCotext>
         <GoalDate>{startDate}~{endDate}{isCom?"[종료]":null}</GoalDate>
         <GoalTitle>{name}</GoalTitle>
         <IsCompletionBox>
-            {isCom?<IsCompleteElem complete={True}>완</IsCompleteElem>:<IsCompletionElem complete={True}>완</IsCompletionElem>}
-            <IsCompletionContent complete={True}>{complete}</IsCompletionContent>
+            <IsCompletionElem complete={!isCom}>완</IsCompletionElem>
+            <IsCompletionContent complete={!isCom}>{complete}</IsCompletionContent>
             <IsCompletionElem complete={False}>미완</IsCompletionElem>
             <IsCompletionContent complete={False}>{incomplete}</IsCompletionContent>
         </IsCompletionBox>

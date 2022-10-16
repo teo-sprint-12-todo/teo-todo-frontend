@@ -5,7 +5,6 @@ import { FloatingActionButton } from '../../common/Buttons';
 import { TodoInputBox, TodoOptionsAndSubmit } from '../../components/AddTodoInput';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
-
 import { Item } from '../../types/dummy';
 import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 import { TodoRequestBody } from '../../types/todo';
