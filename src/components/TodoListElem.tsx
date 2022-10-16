@@ -50,25 +50,6 @@ const Check = styled.input`
     };
 `
 
-function TodoListElem(item: Item) {
-    const [isChecked, setIsChecked] = useState<boolean>(false)
-    const {importance, context} = item
-
-    const onCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setIsChecked(!isChecked)
-    }
-
-    return (
-        <Element>
-            <ElemHeader complete={isChecked} />
-            <ElemContent complete={isChecked}>
-                <Content>
-                    <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
-                    <Check type="checkbox" name="contentCheck" onChange={onCheck} />
-                </Content>
-            </ElemContent>
-        </Element>
-    )
 
 /** Tags */
 const Tags = styled.div`
@@ -152,24 +133,30 @@ const Goal = styled.div<{ backgroundColor: string }>`
   color: #ffffff;
 `;
 
-function TodoListElem(item: Item) {
-  const { importance, context } = item;
 
-  return (
-    <Element>
-      <ElemHeader />
-      <ElemContent>
-        <Tags>
+function TodoListElem(item: Item) {
+    const [isChecked, setIsChecked] = useState<boolean>(false)
+    const {importance, context} = item
+
+    const onCheck = (e:React.ChangeEvent<HTMLInputElement>) => {
+        setIsChecked(!isChecked)
+    }
+
+    return (
+        <Element>
+            <ElemHeader complete={isChecked} />
+            <ElemContent complete={isChecked}>
+            <Tags>
           <Goal backgroundColor="green">일상</Goal>
           <Priority priority="high">중요</Priority>
         </Tags>
-        <Content>
-          <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
-          <Check type="checkbox" name="contentCheck" />
-        </Content>
-      </ElemContent>
-    </Element>
-  );
+                <Content>
+                    <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
+                    <Check type="checkbox" name="contentCheck" onChange={onCheck} />
+                </Content>
+            </ElemContent>
+        </Element>
+    )
 }
 
 export default TodoListElem
