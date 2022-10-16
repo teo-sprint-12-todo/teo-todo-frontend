@@ -51,14 +51,14 @@ function Navigation() {
             : retrospectImg
         }
         text="회고"
-        path="/"
+        path="/retrospect"
         onClick={() => handleClick('/retrospect')}
       />
       <NavButton
         icon={currentPathName === '/goal' ? activeGoalImg : goalImg}
         text="목표"
-        path="/"
-        onClick={() => handleClick('/')}
+        path="/goalList"
+        onClick={() => handleClick('/goalList')}
       />
     </NavWrapper>
   );
