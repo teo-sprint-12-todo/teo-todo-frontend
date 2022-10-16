@@ -200,8 +200,8 @@ function MainTodoList() {
       <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />
       {isInputBoxVisible && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>{TodoList}</TodoListBox>
-      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
       </TodoListMain>
+      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
     </div>
     <FloatingActionButton onClick={handleClickAddButton} />
     </>
