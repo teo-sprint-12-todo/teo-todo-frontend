@@ -7,7 +7,7 @@ const CategoryGroup = styled.div`
   display: flex;
   overflow-x: auto;
 `;
-const Category = styled.button`
+const Category = styled.button<{selectedId:number, categoryId:number}>`
   width: 96px;
   flex: 1 0 auto;
   -webkit-appearance: none;
@@ -21,7 +21,7 @@ const Category = styled.button`
   margin: 0;
   padding: 0;
   border: none;
-  background-color: white;
+  background-color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")} ;;
 `;
 const CategoryName = styled.div`
   height: 30px;
@@ -29,37 +29,48 @@ const CategoryName = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const CategoryFooter = styled.div`
+const CategoryFooter = styled.div<{selectedId:number, categoryId:number}>`
   width: 100%;
   height: 5px;
-  background-color: gray;
+  background-color: ${(props)=>(props.selectedId === props.categoryId ? "black": "gray")};
   border-radius: 5px 5px 0 0;
 `;
 
 interface CategoryBoxProps {
   categoryList: { id: number; name: string }[],
-  onClick: (id: number) => void;
+  onClickHandler: (id: number) => void;
 }
 
-function CategoryBox({ categoryList, onClick }: CategoryBoxProps) {
+
+function CategoryBox({ categoryList, onClickHandler }: CategoryBoxProps) {
+  const [selectedId, setSelectedId] = useState<number>(-1)
+  const idAllCategory = -1
   return (
     <CategoryGroup>
       <Category
+        selectedId={selectedId}
+        categoryId={idAllCategory}
         onClick={() => {
-          onClick(-1);
+          onClickHandler(-1);
         }}
       >
         <CategoryName>모두</CategoryName>
-        <CategoryFooter />
+        <CategoryFooter 
+        selectedId={selectedId}
+        categoryId={idAllCategory}/>
       </Category>
       {categoryList.map((elem) => (
         <Category
+          selectedId={selectedId}
+          categoryId={elem.id}
           onClick={() => {
-            onClick(elem.id);
+            onClickHandler(elem.id);
           }}
         >
           <CategoryName>{elem.name}</CategoryName>
-          <CategoryFooter />
+          <CategoryFooter 
+          selectedId={selectedId}
+          categoryId={idAllCategory}/>
         </Category>
       ))}
     </CategoryGroup>

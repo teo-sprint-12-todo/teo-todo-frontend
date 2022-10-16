@@ -158,7 +158,7 @@ function MainTodoList() {
 
   return (
     <div>
-      <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
+      <CategoryBox categoryList={categoryList} onClickHandler={onClickCategory} />
       <TodoListBox>{TodoList}</TodoListBox>
     </div>
   );
