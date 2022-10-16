@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TodoRequestBody } from '../../types/todo';
 
 const Container = styled.div`
   display: flex;  
@@ -28,11 +29,26 @@ const Input = styled.input`
   }
 `;
 
-function InputBox() {
+
+
+interface Props {
+  todoText: string
+  setTodo: React.Dispatch<React.SetStateAction<TodoRequestBody>>
+}
+function InputBox({todoText, setTodo}: Props) {
+
+  const handleChange = (event: { target: { value: string }; }) => {
+    
+    setTodo(prev => ({
+        ...prev,
+        text: event.target.value
+      }))
+  };
+
   return (
     <Container>
       <Left />
-      <Input id="todo-input" placeholder="할일을 입력하세요!" type="text" inputMode='text' />
+      <Input id="todo-input" placeholder="할일을 입력하세요!" type="text" inputMode='text' onChange={handleChange} value={todoText}/>
     </Container>
   );
 }

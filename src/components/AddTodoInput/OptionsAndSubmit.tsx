@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { useDocumentHeight, useOnScreenKeyboardScrollFix } from '../../hooks';
 import Option, { OptionType } from './Option';
 import SubmitButton from './SubmitButton';
@@ -7,6 +8,8 @@ import { ReactComponent as CalendarIcon } from '../../assets/calendar_icon.svg';
 import { ReactComponent as GoalIcon } from '../../assets/goal_icon.svg';
 import { ReactComponent as ImportanceIcon } from '../../assets/importance_icon.svg';
 import { ReactComponent as CategoryIcon } from '../../assets/category_icon.svg';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { TodoRequestBody } from '../../types/todo';
 
 const Container = styled.div<{ bottom: number }>`
     z-index: 999;
@@ -14,7 +17,7 @@ const Container = styled.div<{ bottom: number }>`
     flex-flow: row;
     justify-content: space-between;
     padding: 12px 20px 20px;
-    position: absolute;
+    position: fixed;
     bottom: ${({ bottom }) => `${bottom}px`};
     width: 100vw;
     background-color: #2C2C2E; 
@@ -27,7 +30,9 @@ const OptionContainer = styled.div`
   gap: 16px;
 `
 
-interface Props {
+
+
+interface Props {  
   onSubmit: () => void
 }
 function OptionsAndSubmit({ onSubmit }: Props) {
@@ -38,11 +43,6 @@ function OptionsAndSubmit({ onSubmit }: Props) {
     setCurrentOption(option)
   }
 
-  const handleSubmit = () => {
-    onSubmit()
-    console.log('submit todo')
-    
-  }
 
   const windowHeight = window.innerHeight
   const viewportHeight = useDocumentHeight()
@@ -58,7 +58,7 @@ function OptionsAndSubmit({ onSubmit }: Props) {
         <Option onClick={() => handleClickOption('importance')} ><GoalIcon /></Option>
         <Option onClick={() => handleClickOption('importance')} ><CategoryIcon /></Option>
       </OptionContainer>
-      <SubmitButton onClick={handleSubmit} />
+      <SubmitButton onClick={onSubmit} />
     </Container>
 
   );

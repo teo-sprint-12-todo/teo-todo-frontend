@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FloatingActionButton } from '../../common/Buttons';
@@ -6,6 +7,8 @@ import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 
 import { Item } from '../../types/dummy';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { TodoRequestBody } from '../../types/todo';
 
 const TodoListBox = styled.div`
     display:flex;
@@ -153,16 +156,33 @@ function MainTodoList() {
 
   const [isInputBoxVisible, setIsInputBoxVisible] = useState<boolean>()
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState<boolean>()
+  const [todo, setTodo] = useState<TodoRequestBody>({
+    text: '',
+    endDate: '2020-12-31',
+    importance: 0,
+    goalId: -1,
+    categoryId: -1,
+  });
 
   const handleClickAddButton = () => {
     setIsOptionsBoxVisible(true)
     setIsInputBoxVisible(true)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
+        headers: {
+            "Authorization": `bearer ${SAMPLE_AUTH_TOKEN}`,
+            "Content-Type": "application/json",
+        }
+    })
+
+    console.log(resp)
     setIsOptionsBoxVisible(false)
     setIsInputBoxVisible(false)
-  } 
+    
+  }
+
   const TodoList = lst.map((item) => (
     <TodoListElem key={item.importance} importance={item.importance} context={item.context} />
   ));
@@ -171,8 +191,9 @@ function MainTodoList() {
     <>
     <div>
       <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
+      {isInputBoxVisible && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>{TodoList}</TodoListBox>
-      {isInputBoxVisible && <TodoInputBox />}
+      
       
       
       {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} />}
