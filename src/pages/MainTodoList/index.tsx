@@ -93,7 +93,7 @@ function RequestCategoryList(): { id: number; name: string }[] {
       },
       {
         id: 4,
-        name: '카테고리 3',
+        name: '카테고리 4',
       },
     ],
   };
@@ -156,7 +156,7 @@ function MainTodoList() {
 
   return (
     <div>
-      <CategoryBox categoryList={categoryList, onClickCategory} />
+      <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
       <TodoListBox>{TodoList}</TodoListBox>
     </div>
   );
