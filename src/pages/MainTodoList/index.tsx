@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FloatingActionButton } from '../../common/Buttons';
+import { TodoInputBox, TodoOptionsAndSubmit } from '../../components/AddTodoInput';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 
@@ -12,10 +14,7 @@ const TodoListBox = styled.div`
     padding : 0 1.2em 4em 1.2em;
 `;
 
-export interface Item {
-  importance: number;
-  context: string;
-}
+
 const lst: Item[] = [
   {
     importance: 0,
@@ -152,6 +151,18 @@ function MainTodoList() {
     { id: 2, name: '카테2' },
   ];
 
+  const [isInputBoxVisible, setIsInputBoxVisible] = useState<boolean>()
+  const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState<boolean>()
+
+  const handleClickAddButton = () => {
+    setIsOptionsBoxVisible(true)
+    setIsInputBoxVisible(true)
+  }
+
+  const handleSubmit = () => {
+    setIsOptionsBoxVisible(false)
+    setIsInputBoxVisible(false)
+  } 
   const TodoList = lst.map((item) => (
     <TodoListElem key={item.importance} importance={item.importance} context={item.context} />
   ));
@@ -160,6 +171,9 @@ function MainTodoList() {
     <div>
       <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
       <TodoListBox>{TodoList}</TodoListBox>
+      {isInputBoxVisible && <TodoInputBox />}
+      <FloatingActionButton onClick={handleClickAddButton} />
+      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} />}
     </div>
   );
 }
