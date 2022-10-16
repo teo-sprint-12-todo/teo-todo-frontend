@@ -86,11 +86,11 @@ function RetrospectTopbar({ percentage, text }:RetrospectTopbarProps) {
         </CircularProgressbarWithChildren>
       </ImgContainer>
       <TextContainer>
-        <Quote alt="quote" src={doubleQuoteStart} top="-10.85px" left="0px" />
+        <Quote alt="quote" src={doubleQuoteStart} top="-19.85px" left="0px" />
         <Text>
           {text}
         </Text>
-        <Quote alt="quote" src={doubleQuoteEnd} bottom="-10.85px" right="0px" />
+        <Quote alt="quote" src={doubleQuoteEnd} bottom="-19.85px" right="0px" />
       </TextContainer>
     </Container>
   );

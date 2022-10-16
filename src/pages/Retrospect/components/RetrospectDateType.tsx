@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   display:flex;
   align-items:center;
-  margin-top:12px;
+  margin-top:42px;
 `;
 
 const Tab = styled.div<{ name:string; selectedValue:string; }>`
