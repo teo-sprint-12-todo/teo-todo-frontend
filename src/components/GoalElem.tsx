@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { Goal } from '../pages/GoalList';
+import type { Goal } from './GoalList';
 
 const Elem = styled.div `
   display:grid;
