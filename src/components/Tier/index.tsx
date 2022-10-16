@@ -11,15 +11,27 @@ import tier7Img from '../../assets/tierImg/tier7.png';
 // import checked from '../assets/checked.png'
 
 const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   height: 40px;
-  padding: 8px 0px;
+  padding: 10px 0px;
+  background-color: white;
+`;
+
+const NavWrapper = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 const TierImage = styled.img`
+  display: block;
   padding: 6px;
   margin-left: 20px;
 
@@ -34,12 +46,15 @@ const StyledLink = styled(Link)`
   margin-right: 15px;
   padding: 4px 8px;
 
-  font-size: 10px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border: 1px solid #aeaeb2;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
 
   text-decoration: none;
-  color: black;
+  color: #007996;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
 `;
 
 export interface Item {
@@ -56,10 +71,10 @@ function Tier() {
   return (
     <Wrapper>
       <TierImage src={tier1Img} alt="티어이미지" />
-      <Wrapper>
+      <NavWrapper>
         <StyledLink to="/signIn">로그인</StyledLink>
         <StyledLink to="/signUp">회원가입</StyledLink>
-      </Wrapper>
+      </NavWrapper>
     </Wrapper>
   );
 }
