@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/teo-todo-frontend/static/js/main.28d55a21.js",
+    "main.js": "/teo-todo-frontend/static/js/main.d794031f.js",
     "index.html": "/teo-todo-frontend/index.html",
-    "main.28d55a21.js.map": "/teo-todo-frontend/static/js/main.28d55a21.js.map"
+    "main.d794031f.js.map": "/teo-todo-frontend/static/js/main.d794031f.js.map"
   },
   "entrypoints": [
-    "static/js/main.28d55a21.js"
+    "static/js/main.d794031f.js"
   ]
 }
