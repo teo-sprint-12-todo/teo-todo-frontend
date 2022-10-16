@@ -37,8 +37,6 @@ const FilterText = styled.div`
   text-align:end;
 `
 
-
-
 function GoalsDetail() {
   return (
     <Container>

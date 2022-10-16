@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import GoalElem from './GoalElem';
 
 export interface GoalData {
@@ -8,7 +9,7 @@ export interface GoalData {
     "startDate" : string,
     "endDate" : string,
     "complete" : number,
-    "incomplete" : number,
+    "incomplete" : number
 }
 
 export interface Goal {
@@ -19,7 +20,7 @@ export interface Goal {
     "endDate" : string,
     "complete" : number,
     "incomplete" : number,
-    isCom : boolean
+    isCom: boolean
 }
 
 interface Complete {
@@ -83,27 +84,41 @@ const lst: GoalData[] = [
 ]
 
 function GoalElemList({complete} : Complete) {
-    const goalLst = (complete?comlst:lst).map(
-        (item) => <GoalElem
-            key={item.id
+    const goalLst = (
+        complete
+            ? comlst
+            : lst
+    ).map((item) => {
+        const url = `/goalsDetail`;
+        return (
+            <Link
+                to={url}
+                state={{
+                    items: item
+                }}
+                style={{
+                    textDecoration: 'none'
+                }}>
+                <GoalElem
+                    key={item.id
 }
-            id={item.id
+                    id={item.id
 }
-            categoryId={item.categoryId
+                    categoryId={item.categoryId
 }
-            name={item.name
+                    name={item.name
 }
-            startDate={item.startDate
+                    startDate={item.startDate
 }
-            endDate={item.endDate
+                    endDate={item.endDate
 }
-            complete={item.complete
+                    complete={item.complete
 }
-            incomplete={item.incomplete
+                    incomplete={item.incomplete
 }
-            isCom={complete}
-/>
-    )
+                    isCom={complete}/></Link>
+        )
+    })
 
     return <div>{goalLst}</div>
 }
