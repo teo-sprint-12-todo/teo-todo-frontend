@@ -8,7 +8,7 @@ import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../constants/url';
 const ElemHeader = styled.div<{ complete: boolean }>`
   background-color: ${(props) => (props.complete ? '#8E8E93' : '#81d6f5')};
   height: inherit;
-  width: 8px;
+  width: 4px;
   border-radius: 5px 0 0 5px;
 `;
 
@@ -24,7 +24,7 @@ const ElemContent = styled.div<{ complete: boolean }>`
 
 const Element = styled.div`
   display: flex;
-  height: 15vh;
+  height: 72px;
 `;
 
 const Content = styled.div`
@@ -179,8 +179,8 @@ function TodoListElem(item: Item) {
       <ElemHeader complete={isChecked} />
       <ElemContent complete={isChecked}>
         <Tags>
-          <Goal backgroundColor="green">일상</Goal>
-          <Priority priority="high">중요</Priority>
+          <Goal backgroundColor="#5F25C9">일상</Goal>
+          <Priority priority="high">매우 중요</Priority>
         </Tags>
         <Content>
           <CheckLabel htmlFor="contentCheck">{context}</CheckLabel>
