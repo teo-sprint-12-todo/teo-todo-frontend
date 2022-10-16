@@ -1,9 +1,14 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FloatingActionButton } from '../../common/Buttons';
+import { TodoInputBox, TodoOptionsAndSubmit } from '../../components/AddTodoInput';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 
 import { Item } from '../../types/dummy';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { TodoRequestBody } from '../../types/todo';
 
 const TodoListBox = styled.div`
     display:flex;
@@ -12,10 +17,7 @@ const TodoListBox = styled.div`
     padding : 0 1.2em 4em 1.2em;
 `;
 
-export interface Item {
-  importance: number;
-  context: string;
-}
+
 const lst: Item[] = [
   {
     importance: 0,
@@ -152,15 +154,54 @@ function MainTodoList() {
     { id: 2, name: '카테2' },
   ];
 
+  const [isInputBoxVisible, setIsInputBoxVisible] = useState<boolean>()
+  const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState<boolean>()
+  const initialState: TodoRequestBody = {
+    text: '',
+    endDate: '2022-12-31',
+    importance: 0,
+    goalId: -1,
+    categoryId: -1,
+  }
+  const [todo, setTodo] = useState<TodoRequestBody>(initialState);
+
+  const handleClickAddButton = () => {
+    setIsOptionsBoxVisible(true)
+    setIsInputBoxVisible(true)
+  }
+
+  const handleSubmit = async () => {
+    try {
+
+      const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
+        headers: {
+            "Authorization": `bearer ${SAMPLE_AUTH_TOKEN}`,
+            "Content-Type": "application/json",
+        }
+      })
+      console.log(resp)
+      setTodo(initialState)
+      setIsOptionsBoxVisible(false)
+      setIsInputBoxVisible(false)
+    } catch {
+      console.log('error')
+    }
+  }
+
   const TodoList = lst.map((item) => (
     <TodoListElem key={item.importance} importance={item.importance} context={item.context} />
   ));
 
   return (
+    <>
     <div>
       <CategoryBox categoryList={categoryList} onClick={onClickCategory} />
+      {isInputBoxVisible && <TodoInputBox todoText={todo.text} setTodo={setTodo} />}
       <TodoListBox>{TodoList}</TodoListBox>
+      {isOptionsBoxVisible && <TodoOptionsAndSubmit onSubmit={handleSubmit} setTodo={setTodo}/>}
     </div>
+    <FloatingActionButton onClick={handleClickAddButton} />
+    </>
   );
 }
 
