@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import errorImg from '../../assets/authImg/error.svg';
 
 const AuthFormWrapper = styled.div`
   display: flex;
@@ -33,6 +34,10 @@ const StyledInput = styled.input`
   & + & {
     margin-top: 0.6rem;
   }
+
+  ::placeholder {
+    padding-left: 10px;
+  }
 `;
 
 const Submit = styled.button`
@@ -44,19 +49,69 @@ const Submit = styled.button`
 
   background: linear-gradient(0deg, #ebebf0, #ebebf0), #21272a;
   color: #bcbcc0;
-  /* 아이디 비밀번호가 유효할때 
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    #21272a;
-  color: white;
-    */
 
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
   text-align: center;
+  &:hover {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      #21272a;
+    color: white;
+  }
 `;
 
-function AuthForm({ type }: any) {
+const ErrorMessage = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #db3450;
+  margin: 6px 0px;
+
+  display: flex;
+  align-items: center;
+`;
+
+const ErrorImage = styled.img`
+  margin-right: 5px;
+`;
+
+function AuthForm({
+  setUserId,
+  setUserPassword,
+  setUserPasswordCheck,
+  requestSign,
+  userPassword,
+  type,
+}: any) {
+  const [userIdError, setUserIdError] = useState(false);
+  const [userPWError, setUserPWError] = useState(false);
+  const [userPWCheckError, setUserPWCheckError] = useState(false);
+
+  const onChangeUserId = (e: any) => {
+    const userIdRegex = /^[0-9a-zA-Z]{5,}$/;
+    if (!e.target.value || userIdRegex.test(e.target.value))
+      setUserIdError(false);
+    else setUserIdError(true);
+    setUserId(e.target.value);
+  };
+  const onChangePassword = (e: any) => {
+    const userPWRegex = /^[0-9a-zA-Z]{5,}$/;
+    if (!e.target.value || userPWRegex.test(e.target.value))
+      setUserPWError(false);
+    else setUserPWError(true);
+    setUserPassword(e.target.value);
+  };
+
+  const onChangePasswordCheck = (e: any) => {
+    setUserPasswordCheck(e.target.value);
+    if (userPassword === e.target.value) {
+      setUserPWCheckError(false);
+    } else {
+      setUserPWCheckError(true);
+    }
+  };
+
   return (
     <AuthFormWrapper>
       {type === 'signUp' ? (
@@ -64,27 +119,50 @@ function AuthForm({ type }: any) {
       ) : (
         <AuthInfoMessage>로그인</AuthInfoMessage>
       )}
-      <form>
+      <form onSubmit={requestSign}>
         <StyledInput
           autoComplete="username"
           name="username"
           placeholder="아이디"
+          onChange={onChangeUserId}
         />
+
         <StyledInput
           autoComplete="current-password"
           name="password"
           placeholder="비밀번호"
           type="password"
+          onChange={onChangePassword}
         />
-        {/* type 이 회원가입이면, 비밀번호 확인 인풋 추가 */}
+
         {type === 'signUp' && (
           <StyledInput
             autoComplete="new-password"
-            name="passwordConfirm"
+            name="passwordCheck"
             placeholder="비밀번호 확인"
             type="password"
+            onChange={onChangePasswordCheck}
           />
         )}
+        {userIdError && (
+          <ErrorMessage>
+            <ErrorImage src={errorImg} alt="아이디 유효성 에러" />
+            아이디를 입력해주세요.
+          </ErrorMessage>
+        )}
+        {userPWError && (
+          <ErrorMessage>
+            <ErrorImage src={errorImg} alt="비밀번호 유효성 에러" />
+            비밀번호을 입력해주세요.
+          </ErrorMessage>
+        )}
+        {userPWCheckError && (
+          <ErrorMessage>
+            <ErrorImage src={errorImg} alt="비밀번호 확인 유효성 에러" />
+            비밀번호 확인이 일치하지 않습니다.
+          </ErrorMessage>
+        )}
+
         {type === 'signUp' ? (
           <Submit>회원가입</Submit>
         ) : (
