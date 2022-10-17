@@ -12,11 +12,11 @@ import Retrospect from './pages/Retrospect/Retrospect';
 function App() {
   return (
     <HashRouter>
-      
       <Routes>
+        <Route path="/" element={<MainTodoList />} />
         <Route path="/mainTodoList" element={<MainTodoList />} />
         <Route path="/calendar" element={<Calendar />} />
-        <Route path="/goalList" element={<GoalList/>} />
+        <Route path="/goalList" element={<GoalList />} />
         <Route path="/retrospect" element={<Retrospect />} />
         <Route path="/signUp" element={<SignUpPage />} />
         <Route path="/signIn" element={<SignInPage />} />

@@ -22,7 +22,7 @@ const StyledInput = styled.input`
 
   border: 1px solid #d8d8dc;
   border-radius: 2px;
-  padding: 0;
+  padding: 0px 10px;
 
   width: 100%;
   height: 44px;
@@ -33,10 +33,6 @@ const StyledInput = styled.input`
 
   & + & {
     margin-top: 0.6rem;
-  }
-
-  ::placeholder {
-    padding-left: 10px;
   }
 `;
 
@@ -70,6 +66,8 @@ const ErrorMessage = styled.p`
 
   display: flex;
   align-items: center;
+
+  height: 20px;
 `;
 
 const ErrorImage = styled.img`
@@ -89,14 +87,14 @@ function AuthForm({
   const [userPWCheckError, setUserPWCheckError] = useState(false);
 
   const onChangeUserId = (e: any) => {
-    const userIdRegex = /^[0-9a-zA-Z]{5,}$/;
+    const userIdRegex = /^[0-9a-zA-Z]{4,}$/;
     if (!e.target.value || userIdRegex.test(e.target.value))
       setUserIdError(false);
     else setUserIdError(true);
     setUserId(e.target.value);
   };
   const onChangePassword = (e: any) => {
-    const userPWRegex = /^[0-9a-zA-Z]{5,}$/;
+    const userPWRegex = /^[0-9a-zA-Z]{4,}$/;
     if (!e.target.value || userPWRegex.test(e.target.value))
       setUserPWError(false);
     else setUserPWError(true);
@@ -144,24 +142,31 @@ function AuthForm({
             onChange={onChangePasswordCheck}
           />
         )}
-        {userIdError && (
+        {userIdError ? (
           <ErrorMessage>
             <ErrorImage src={errorImg} alt="아이디 유효성 에러" />
             아이디를 입력해주세요.
           </ErrorMessage>
+        ) : (
+          <ErrorMessage />
         )}
-        {userPWError && (
+        {userPWError ? (
           <ErrorMessage>
             <ErrorImage src={errorImg} alt="비밀번호 유효성 에러" />
             비밀번호을 입력해주세요.
           </ErrorMessage>
+        ) : (
+          <ErrorMessage />
         )}
-        {userPWCheckError && (
-          <ErrorMessage>
-            <ErrorImage src={errorImg} alt="비밀번호 확인 유효성 에러" />
-            비밀번호 확인이 일치하지 않습니다.
-          </ErrorMessage>
-        )}
+        {type === 'signUp' &&
+          (userPWCheckError ? (
+            <ErrorMessage>
+              <ErrorImage src={errorImg} alt="비밀번호 확인 유효성 에러" />
+              비밀번호 확인이 일치하지 않습니다.
+            </ErrorMessage>
+          ) : (
+            <ErrorMessage />
+          ))}
 
         {type === 'signUp' ? (
           <Submit>회원가입</Submit>
