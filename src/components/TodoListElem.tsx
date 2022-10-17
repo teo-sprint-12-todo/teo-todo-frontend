@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import type { Item } from '../types/dummy';
 import checked from '../assets/checked.png';
 import type { PriorityLevel } from '../common/Buttons/ImportanceButton';
-import BASEURL from '../config';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../constants/url';
 
 const ElemHeader = styled.div<{ complete: boolean }>`
   background-color: ${(props) => (props.complete ? '#8E8E93' : '#81d6f5')};
@@ -147,7 +147,7 @@ function TodoListElem(item: Item) {
 
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
       myHeaders.append("Content-Type", "application/json");
     
       const raw = JSON.stringify({
@@ -161,7 +161,7 @@ function TodoListElem(item: Item) {
         redirect: 'follow',
       };
     
-      const response = await fetch(`${BASEURL}todo/todo/check`, requestOptions).then((res)=> res.json())
+      const response = await fetch(`${SERVER_URL}/todo/todo/check`, requestOptions).then((res)=> res.json())
       console.log(response)
     } catch (error) {
       console.log(error)

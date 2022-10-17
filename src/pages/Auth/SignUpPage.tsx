@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AuthForm from '../../components/Auth/AuthForm';
 import AuthTemplate from '../../components/Auth/AuthTemplate';
+import { SERVER_URL } from '../../constants/url';
 
 function SignUpPage() {
   const [userId, setUserId] = useState('');
@@ -31,7 +32,7 @@ function SignUpPage() {
     e.preventDefault();
     try {
       const response = await fetch(
-        'http://3.35.154.223:8080/v1/user/sign-up',
+        `${SERVER_URL}/user/sign-up`,
         requestOptions
       );
       const result: any = await response.json();

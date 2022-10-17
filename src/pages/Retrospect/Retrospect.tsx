@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import RetrospectDateType from './components/RetrospectDateType';
 import RetrospectList from './components/RetrospectList';
 import RetrospectTopbar from './components/RetrospectTopbar';
-import BASEURL from '../../config'
 import { DateSelectType, RetrospectType } from '../../types/retrospectType';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 
 const Container = styled.div`
   padding : 0 2rem;
@@ -19,7 +19,7 @@ function Retrospect() {
   const requestReviewList = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
       
       const requestOptions:RequestInit = {
         method: 'GET',
@@ -27,7 +27,7 @@ function Retrospect() {
         redirect: 'follow'
       };
       
-      const response = await fetch(`${BASEURL}review/list/${selectedDateType}`, requestOptions).then(res=>res.json())
+      const response = await fetch(`${SERVER_URL}/review/list/${selectedDateType}`, requestOptions).then(res=>res.json())
       if(response.statusCode === 200){
         setRetrospectList(response.data)
       }
@@ -41,7 +41,7 @@ function Retrospect() {
 const requestUserMyTier = async () => {
   try {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+    myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
     
     const requestOptions: RequestInit = {
       method: 'GET',
@@ -49,7 +49,7 @@ const requestUserMyTier = async () => {
       redirect: 'follow'
     };
     
-    const response = await fetch(`${BASEURL}user/my/tier`, requestOptions).then(res=> res.json());
+    const response = await fetch(`${SERVER_URL}/user/my/tier`, requestOptions).then(res=> res.json());
     if(response.statusCode === 200){
       setMyTier(response.data);
     }

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BASEURL from '../../../config';
 import ProgressBar from '../../../components/ProgressBar';
 import { DateSelectType } from '../../../types/retrospectType';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../../constants/url';
 
 const Container = styled.div`
   height : fit-content;
@@ -135,7 +136,7 @@ function RetrospectWrite({date, selectedDateType, percentage, todoCount, didCoun
 const requestReviewAdd = async () => {
   try {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+    myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
     myHeaders.append("Content-Type", "application/json");
     
     
@@ -151,7 +152,7 @@ const requestReviewAdd = async () => {
       redirect: 'follow'
     };
     
-    const response = await fetch(`${BASEURL}review/add`, requestOptions).then(res => res.json());
+    const response = await fetch(`${SERVER_URL}/review/add`, requestOptions).then(res => res.json());
 
     if(response.statusCode === 200){
       requestReviewStatLast();

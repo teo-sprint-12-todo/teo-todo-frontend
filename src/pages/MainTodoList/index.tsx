@@ -5,7 +5,7 @@ import { FloatingActionButton } from '../../common/Buttons';
 import { TodoInputBox, TodoOptionsAndSubmit } from '../../components/AddTodoInput';
 import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
-import { SAMPLE_AUTH_TOKEN } from '../../constants/url';
+import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 import { TodoRequestBody } from '../../types/todo';
 import BASEURL from '../../config';
 import { TodoType } from '../../types/mainTodoListType';
@@ -44,7 +44,7 @@ const ADD_TODO_INITIAL_VALUE = {
       const myHeaders = new Headers();
       myHeaders.append(
         'Authorization',
-        'bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA'
+        `bearer ${SAMPLE_AUTH_TOKEN}`
         );
         
         const requestOptions: RequestInit = {
@@ -53,7 +53,7 @@ const ADD_TODO_INITIAL_VALUE = {
           redirect: 'follow',
         };
         
-        const response = await fetch(' http://3.35.154.223:8080/v1/todo/category/list', requestOptions).then(res=> res.json())
+        const response = await fetch(`${SERVER_URL}/todo/category/list`, requestOptions).then(res=> res.json())
         if(response.statusCode === 200){
           setCategoryList(response.data)
         }
@@ -73,7 +73,7 @@ const ADD_TODO_INITIAL_VALUE = {
 
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVsdG9ud29uQGdtYWlsLmNvbSIsInJvbGVzIjoiVVNFUiJ9.nLeekFmZL1s9QYlVsQQrslSa1ucvvL4Ng_1dT5sRKKA");
+      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
       
       const requestOptions : RequestInit = {
         method: 'GET',
