@@ -11,13 +11,13 @@ import { TodoType } from '../../types/mainTodoListType';
 import Tier from '../../components/Tier';
 
 const TodoListMain = styled.div`
-    padding : 0 1.2em 0 1.2em;  
+    padding : 56px 1.2em 0 1.2em; 
 `
 const TodoListBox = styled.div`
     display:flex;
     flex-direction:column;
     gap:0.8em;
-    padding : 2em 0em 4em 0em;
+    padding : 1em 0em 4em 0em;
 `;
 
 /** MainTodoList */
