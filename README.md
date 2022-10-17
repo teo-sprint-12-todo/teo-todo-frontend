@@ -3,7 +3,7 @@
     <img width="200px;" src="https://i.imgur.com/ktEm6R9.png" alt="로고"/>
   </a>
 </p>
-<h1 align="middle"><a href="https://teo-sprint-12-todo.github.io/teo-todo-frontend/">투두뚜두</a></h1>
+<h1 align="middle"><a href="https://teo-sprint-12-todo.github.io/teo-todo-frontend/#/mainTodoList">투두뚜두</a></h1>
 <p align="middle"></p>
 
 
