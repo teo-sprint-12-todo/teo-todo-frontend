@@ -1,24 +1,3 @@
-### convention
-UI 컴포넌트와, 로직 컴포넌트의 분리
-
-### Folder Structure
-/assets
-/types
-/pages
- - index.ts
-
-/components
- - Todo Item
-
-/common
- - button
- - modal
-
-/context 전역상태관리
- - user
- 
-/hooks
-
 <p align="middle" >
   <a href="https://github.com/teo-sprint-12-todo">
     <img width="200px;" src="https://i.imgur.com/ktEm6R9.png" alt="로고"/>
@@ -32,14 +11,14 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 `투두뚜두`는 여러분의 목표 달성을 도와주는 투두리스트 웹앱입니다.
 
- 투두뚜두와 함께 달려가다보면 목표와 가까워진 자신을 발견하게 될거에요!
+ 투두뚜두와 함께 달려가다보면 목표와 가까워진 자신을 발견하게 될거에요! 😎✨
 
 ## 🥰 멤버
 
 |                                         Backend                                         |                                          Frontend                                          |                                          Frontend                                           |                                         Frontend                                         |                                         Frontend                                         |                                          Designer                                          |                                         Frontend                                         |
 | :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------: |
 | |
-|                            [코트니](https://github.com/210-reverof)                             |                          [제이슨](https://github.com/jongwooha98)                          |                           [루씨](https://github.com/rshk2002)                           |                           [꾺](https://github.com/C12H22O12)                            |                          [데이브](https://github.com/choseonghwan91)                          |                        [보리](https://github.com/BETTERFUTURE4)                         |                        [제이드](https://github.com/dev-yun)                         |
+|                            [코트니](https://github.com/210-reverof)                             |                          [제이슨](https://github.com/jongwooha98)                          |                           [루씨](https://github.com/rshk2002)                           |                           [꾺](https://github.com/C12H22O12)                            |                          [데이브](https://github.com/choseonghwan91)                          |                        [보리](https://teo-sprint-12-todo.github.io/teo-todo-frontend)                         |                        [제이드](https://github.com/dev-yun)                         |
 
 ## ⚙️ 기술스택
 
@@ -130,30 +109,48 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 ### 1. 메인화면(TODO CRUD)
 투두앱을 사용할 때 추가가 번거로워 손이 가지 않거나, 중요도와 긴급도를 제대로 볼 수 없어 답답했던 적이 있나요? 투두뚜두는 그 점을 캐치하여 좀 더 편리한 메인 화면을 구성해 봤어요. 한눈에 해야 할 일들을 볼 수 있고, 필요하면 하단의 버튼을 통해 바로 추가할 수 있어요!
-
 <img src="./todo.png" width="30%" />
 
 
 ### 2. 캘린더
 매일매일 투두를 확인하는 건 좋지만...그래도 전체적인 일정을 확인하고 싶어! 하시는 분들을 위해 준비했어요. 캘린더를 통해 한눈에 일정을 볼 수 있답니다.
-
 <img src="/calendar.png" width="30%" />
 
 ### 3. 회고 및 통계
+다시 되돌아보면서, 나는 얼마나 목표를 달성했는가, 그 때는 어떤 생각을 했었지? 볼 수 있어요. 단 기억 미화는 금물! 수정이 안되니 솔직하게 작성해주세요~
 <img src="/retrospect.png" width="30%" />
 
 ### 4. 목표
+이제까지 얼마나 달성했는지, 앞으로 얼마나 가야 하는지 수치화해서 확인할 수 있어요!
 <img src="/goal-1.png" width="30%" />
-<img src="/goal-2.png" width="30%" />
+<img src="/goal-2" width="30%" />
      
      
 ## 우리는 이렇게 작업했어요
 ![](https://i.imgur.com/IBaQhtc.png)
 
-### 1. 서로 인사를 나눴어요
+<!-- ### 1. 서로 인사를 나눴어요
 
-![](https://i.imgur.com/Nyz9LLl.png)
+![](https://i.imgur.com/Nyz9LLl.png) -->
 
-### 2. 이렇게 목표를 정했어요
 
-![](https://i.imgur.com/nwishxR.png)
+<!-- ### Convention
+UI 컴포넌트와, 로직 컴포넌트의 분리
+
+### Folder Structure
+/assets
+/types
+/pages
+ - index.ts
+
+/components
+ - Todo Item
+
+/common
+ - button
+ - modal
+
+/context 전역상태관리
+ - user
+ 
+/hooks -->
