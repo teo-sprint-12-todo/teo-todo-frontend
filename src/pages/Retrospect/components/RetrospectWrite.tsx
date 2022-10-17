@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import BASEURL from '../../../config';
 import ProgressBar from '../../../components/ProgressBar';
 import { DateSelectType } from '../../../types/retrospectType';
 import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../../constants/url';

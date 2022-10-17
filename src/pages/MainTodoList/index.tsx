@@ -7,7 +7,6 @@ import TodoListElem from '../../components/TodoListElem';
 import CategoryBox from '../../components/CategoryGroup'
 import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
 import { TodoRequestBody } from '../../types/todo';
-import BASEURL from '../../config';
 import { TodoType } from '../../types/mainTodoListType';
 import Tier from '../../components/Tier';
 
@@ -81,7 +80,7 @@ const ADD_TODO_INITIAL_VALUE = {
         redirect: 'follow'
       };
 
-      const response = await fetch(`${BASEURL}todo/todo/${uri}`, requestOptions).then(res=> res.json())
+      const response = await fetch(`${SERVER_URL}/todo/todo/${uri}`, requestOptions).then(res=> res.json())
       if(response.statusCode === 200){
         setTodoList(response.data)
       }
@@ -121,7 +120,7 @@ const ADD_TODO_INITIAL_VALUE = {
       if(!todo.endDate) return;
       if(!todo.text) return;
 
-      const resp = await axios.post(`${BASEURL}todo/todo/add`, todo, {
+      const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
         headers: {
             Authorization: `bearer ${SAMPLE_AUTH_TOKEN}`,
             "Content-Type": "application/json",
