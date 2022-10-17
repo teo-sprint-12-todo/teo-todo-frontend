@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/teo-todo-frontend/static/css/main.91ef3ade.css",
-    "main.js": "/teo-todo-frontend/static/js/main.5c66c38c.js",
+    "main.js": "/teo-todo-frontend/static/js/main.419c8c30.js",
     "static/media/active_calendar.svg": "/teo-todo-frontend/static/media/active_calendar.897ef171d79ea8a308c7a2893c60ad86.svg",
     "static/media/calendar.svg": "/teo-todo-frontend/static/media/calendar.41aa6bae82ccbc74f46c6420be5dfdb1.svg",
     "static/media/active_retrospect.svg": "/teo-todo-frontend/static/media/active_retrospect.046ac5cb0b142a6ceb6254fa1e644a84.svg",
@@ -24,10 +24,10 @@
     "static/media/error.svg": "/teo-todo-frontend/static/media/error.fd99f0e7ce391d4597f0266d6dc74f10.svg",
     "static/media/close.svg": "/teo-todo-frontend/static/media/close.4673e9535ba2e34d5b56e859fc20b53d.svg",
     "main.91ef3ade.css.map": "/teo-todo-frontend/static/css/main.91ef3ade.css.map",
-    "main.5c66c38c.js.map": "/teo-todo-frontend/static/js/main.5c66c38c.js.map"
+    "main.419c8c30.js.map": "/teo-todo-frontend/static/js/main.419c8c30.js.map"
   },
   "entrypoints": [
     "static/css/main.91ef3ade.css",
-    "static/js/main.5c66c38c.js"
+    "static/js/main.419c8c30.js"
   ]
 }
