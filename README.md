@@ -19,22 +19,20 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
  
 /hooks
 
-
-
 <p align="middle" >
-  <a href="https://sokdaksokdak.com/">
-    <img width="200px;" src="https://github.com/woowacourse-teams/2022-sokdak/blob/dev/frontend/src/assets/images/panda_logo.svg?raw=true" alt="로고"/>
+  <a href="https://github.com/teo-sprint-12-todo">
+    <img width="200px;" src="https://i.imgur.com/ktEm6R9.png" alt="로고"/>
   </a>
 </p>
-<h1 align="middle"><a href="https://sokdaksokdak.com/">투두뚜두</a></h1>
-<p align="middle">우리들만의 비밀 이야기🎋, 속닥속닥</p>
+<h1 align="middle"><a href="https://teo-sprint-12-todo.github.io/teo-todo-frontend/">투두뚜두</a></h1>
+<p align="middle"></p>
 
 
 ## 💬 서비스 소개
 
 `투두뚜두`는 여러분의 목표 달성을 도와주는 투두리스트 웹앱입니다.
 
- 투두뚜두와 함께 달려가다보면 목표와 가까워진 자신을 발견하게 될거에요.
+ 투두뚜두와 함께 달려가다보면 목표와 가까워진 자신을 발견하게 될거에요!
 
 ## 🥰 멤버
 
@@ -115,7 +113,7 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 ## <img src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1593397832/noticon/xmudzlguiuwsxfi3wjkj.png" width="60px" height="60px"> 우리의 규칙
 
-### 1. 결과보다 배움을 
+### 1. 결과보다 배움을
 
 ### 2. 다 같이 알기
 
@@ -123,7 +121,6 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 ### 4. 반대는 근거와 함께
 
-### 5. 메시지를 보낼 때, 핵심으로 소통
 
 ![](https://i.imgur.com/PGJ0gAu.png)
 
@@ -132,11 +129,12 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 
 ### 1. 메인화면(TODO CRUD)
-투두앱을 사용할 때 추가가 번거로워 손이 가지 않거나, 중요도와 긴급도를 제대로 볼 수 없어 답답했던 적이 있나요? 투두뚜두는 
+투두앱을 사용할 때 추가가 번거로워 손이 가지 않거나, 중요도와 긴급도를 제대로 볼 수 없어 답답했던 적이 있나요? 투두뚜두는 그 점을 캐치하여 좀 더 편리한 메인 화면을 구성해 봤어요. 한눈에 해야 할 일들을 볼 수 있고, 필요하면 하단의 버튼을 통해 바로 추가할 수 있어요!
 <img src="./todo.png" width="30%" />
 
 
 ### 2. 캘린더
+매일매일 투두를 확인하는 건 좋지만...그래도 전체적인 일정을 확인하고 싶어! 하시는 분들을 위해 준비했어요. 캘린더를 통해 한눈에 일정을 볼 수 있답니다.
 <img src="/calendar.png" width="30%" />
 
 ### 3. 회고 및 통계
@@ -153,3 +151,7 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 ### 1. 서로 인사를 나눴어요
 
 ![](https://i.imgur.com/Nyz9LLl.png)
+
+### 2. 이렇게 목표를 정했어요
+
+![](https://i.imgur.com/nwishxR.png)
