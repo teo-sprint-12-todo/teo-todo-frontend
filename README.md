@@ -144,7 +144,7 @@ UI 컴포넌트와, 로직 컴포넌트의 분리
 
 ### 4. 목표
 <img src="/goal-1.png" width="30%" />
-<img src="/goal-2" width="30%" />
+<img src="/goal-2.png" width="30%" />
      
      
 ## 우리는 이렇게 작업했어요
