@@ -4,21 +4,15 @@ import styled from 'styled-components';
 import closeImg from '../../assets/authImg/close.svg';
 
 const AuthTemplateWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height:100vh;
   background: #ffffff;
 `;
 
-const WhiteBox = styled.div`
+const WhiteBox = styled.div<{isSignup: boolean}>`
   .logo-area {
     display: block;
     padding-bottom: 2rem;
@@ -27,12 +21,13 @@ const WhiteBox = styled.div`
     /* 글자 간격 */
     letter-spacing: 2px;
   }
-
+  
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
   width: 360px;
   background: white;
   border-radius: 2px;
+  margin-top: ${({isSignup})=> isSignup? "96px" : "64px"};
 `;
 
 const LinkToMain = styled(Link)`
@@ -44,7 +39,7 @@ const LinkToMain = styled(Link)`
 function AuthTemplate({ children }: any) {
   return (
     <AuthTemplateWrapper>
-      <WhiteBox>
+      <WhiteBox isSignup={window.location.pathname === '/teo-todo-frontend/signUp'}>
         <LinkToMain to="/mainTodoList">
           <img src={closeImg} alt="메인페이지 이동" />
         </LinkToMain>
