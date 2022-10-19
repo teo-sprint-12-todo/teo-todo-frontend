@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation, useParams } from 'react-router-dom';
 import NavButton from './NavButton';
 import todoImg from '../../assets/navImg/todo.svg';
 import activeTodoImg from '../../assets/navImg/active_todo.svg';
@@ -12,20 +13,21 @@ import activeGoalImg from '../../assets/navImg/active_goal.svg';
 import { NAV_HEIGHT } from '../../constants/style';
 
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.div<{isVisible: boolean}>`
   position: fixed;
   bottom: 0;
   width: 100vw;
   height: ${NAV_HEIGHT}px;
   border-top: 1px solid #d8d8dc;
-
-  display: flex;
   justify-content: space-around;
   align-items: center;
-
   background-color: white;
+
+  display: ${({isVisible})=> isVisible ? 'flex' : 'none'};
+  
 `;
 function Navigation() {
+  const location = useLocation()
   const [currentPathName, setCurrentPathName] = React.useState<string>();
 
   const handleClick = (pathName: string) => {
@@ -33,7 +35,7 @@ function Navigation() {
   };
 
   return (
-    <NavWrapper>
+    <NavWrapper isVisible={location.pathname !== '/' && location.pathname !== '/signIn' && location.pathname !== '/signUp'}>
       <NavButton
         icon={currentPathName === '/mainTodoList' ? activeTodoImg : todoImg}
         text="투두"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './common/Navigation';
 import LandingPage from './pages/Auth/LandingPage';
 import SignInPage from './pages/Auth/SignInPage';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/signIn" element={<SignInPage />} />
         <Route path="/goalsDetail" element={<GoalsDetail />} />
       </Routes>
-      {window.location.pathname !== ('/teo-todo-frontend/' && '/teo-todo-frontend/signUp' && '/teo-todo-frontend/signIn') && <Navigation />}
+      <Navigation />
     </HashRouter>
   );
 }
