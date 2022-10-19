@@ -4,7 +4,7 @@ import RetrospectDateType from './components/RetrospectDateType';
 import RetrospectList from './components/RetrospectList';
 import RetrospectTopbar from './components/RetrospectTopbar';
 import { DateSelectType, RetrospectType } from '../../types/retrospectType';
-import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { SERVER_URL } from '../../constants/url';
 
 const Container = styled.div`
   padding : 0 2rem;
@@ -19,7 +19,8 @@ function Retrospect() {
   const requestReviewList = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
+      const token = localStorage.getItem('user-token')
+      myHeaders.append("Authorization", `bearer ${token}`);
       
       const requestOptions:RequestInit = {
         method: 'GET',
@@ -41,7 +42,8 @@ function Retrospect() {
 const requestUserMyTier = async () => {
   try {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
+    const token = localStorage.getItem('user-token')
+    myHeaders.append("Authorization", `bearer ${token}`);
     
     const requestOptions: RequestInit = {
       method: 'GET',

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ProgressBar from '../../../components/ProgressBar';
 import { DateSelectType } from '../../../types/retrospectType';
-import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../../constants/url';
+import { SERVER_URL } from '../../../constants/url';
 
 const Container = styled.div`
   height : fit-content;
@@ -135,7 +135,8 @@ function RetrospectWrite({date, selectedDateType, percentage, todoCount, didCoun
 const requestReviewAdd = async () => {
   try {
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
+    const token = localStorage.getItem('user-token')
+    myHeaders.append("Authorization", `bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
     
     

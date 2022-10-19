@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { DateSelectType, RetrospectType } from '../../../types/retrospectType';
 import RetrospectCard from './RetrospectCard';
 import RetrospectWrite from './RetrospectWrite';
-import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../../constants/url';
+import { SERVER_URL } from '../../../constants/url';
 
 const Container = styled.div`
     margin-top:19px;
@@ -22,7 +22,8 @@ function RetrospectList({retrospectList, selectedDateType, requestReviewList}:Re
   const requestReviewStatLast = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
+      const token = localStorage.getItem('user-token')
+      myHeaders.append("Authorization", `bearer ${token}`);
       
       const requestOptions: RequestInit = {
         method: 'GET',

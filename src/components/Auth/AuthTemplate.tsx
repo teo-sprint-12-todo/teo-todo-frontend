@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import closeImg from '../../assets/authImg/close.svg';
 
@@ -37,12 +37,14 @@ const LinkToMain = styled(Link)`
 `;
 
 function AuthTemplate({ children }: any) {
+  const location = useLocation();
+  const path = location.pathname;
   return (
     <AuthTemplateWrapper>
-      <WhiteBox isSignup={window.location.pathname === '/teo-todo-frontend/signUp'}>
-        <LinkToMain to="/mainTodoList">
+      <WhiteBox isSignup={path === '/teo-todo-frontend/signUp'}>
+        {path === '/signUp' && <LinkToMain to="/">
           <img src={closeImg} alt="메인페이지 이동" />
-        </LinkToMain>
+        </LinkToMain>}
         {children}
       </WhiteBox>
     </AuthTemplateWrapper>

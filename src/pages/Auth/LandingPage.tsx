@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo.svg'
 
@@ -57,6 +58,15 @@ border-radius: 8px;
 `
 
 function LandingPage() {
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(localStorage.getItem('user-token')){
+      navigate('/mainTodoList')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
   return (
     <Container>
       <LogoContainer>
@@ -64,8 +74,8 @@ function LandingPage() {
         <LogoText>투두</LogoText>
       </LogoContainer>
       <BtnContainer>
-        <SignupBtn>처음 사용하시나요?</SignupBtn>
-        <SigninBtn>로그인</SigninBtn>
+        <SignupBtn onClick={()=> navigate('/signUp')}>처음 사용하시나요?</SignupBtn>
+        <SigninBtn onClick={()=> navigate('/signIn')}>로그인</SigninBtn>
       </BtnContainer>
     </Container>
   );

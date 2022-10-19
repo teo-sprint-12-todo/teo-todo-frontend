@@ -41,9 +41,10 @@ const ADD_TODO_INITIAL_VALUE = {
     // TODO: 카테고리 리스트 요청
     try {
       const myHeaders = new Headers();
+      const token = localStorage.getItem('user-token')
       myHeaders.append(
         'Authorization',
-        `bearer ${SAMPLE_AUTH_TOKEN}`
+        `bearer ${token}`
         );
         
         const requestOptions: RequestInit = {
@@ -72,7 +73,8 @@ const ADD_TODO_INITIAL_VALUE = {
 
     try {
       const myHeaders = new Headers();
-      myHeaders.append("Authorization", `bearer ${SAMPLE_AUTH_TOKEN}`);
+      const token = localStorage.getItem('user-token')
+      myHeaders.append("Authorization", `bearer ${token}`);
       
       const requestOptions : RequestInit = {
         method: 'GET',
@@ -119,10 +121,10 @@ const ADD_TODO_INITIAL_VALUE = {
     try {
       if(!todo.endDate) return;
       if(!todo.text) return;
-
+      const token = localStorage.getItem('user-token')
       const resp = await axios.post(`${SERVER_URL}/todo/todo/add`, todo, {
         headers: {
-            Authorization: `bearer ${SAMPLE_AUTH_TOKEN}`,
+            Authorization: `bearer ${token}`,
             "Content-Type": "application/json",
         }
       })

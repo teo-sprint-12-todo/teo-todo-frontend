@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Page } from '../../common/Page';
 import Calendar from '../../components/Calendar/Calendar';
 import Tier from '../../components/Tier';
-import { SAMPLE_AUTH_TOKEN, SERVER_URL } from '../../constants/url';
+import { SERVER_URL } from '../../constants/url';
 import { TodoList } from '../../types/todo';
 
 function CalendarPage() {
@@ -13,10 +13,10 @@ function CalendarPage() {
   const getTodoList = async(year:number, month:number ) => {
 
     try {
-
+      const token = localStorage.getItem('user-token')
       const { data } = await axios.get<AxiosResponse<TodoList[]>>(`${SERVER_URL}/todo/todo/list/calendar/${year}/${month}`, {
         headers: {
-            "Authorization": `bearer ${SAMPLE_AUTH_TOKEN}`,
+            "Authorization": `bearer ${token}`,
             "Content-Type": "application/json",
         }
       })

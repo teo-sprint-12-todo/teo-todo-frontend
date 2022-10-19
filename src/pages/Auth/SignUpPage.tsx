@@ -38,7 +38,7 @@ function SignUpPage() {
       const result: any = await response.json();
       console.log(result.resMessage);
       if (result.resMessage === '회원 가입 완료') {
-        navigate('/mainTodoList');
+        navigate('/signIn');
       } else {
         navigate(state);
       }
